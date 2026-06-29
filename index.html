@@ -663,6 +663,16 @@
     .day-card-body { padding: 0.9rem 1rem; font-size: 0.86rem; }
     .day-card-body .route { margin-bottom: 0.5rem; line-height: 1.6; color: #475569; }
 
+    .day-card-body .route a,
+    .day-card-body .group a {
+      color: #0d9488;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .day-card-body .route a:hover,
+    .day-card-body .group a:hover { text-decoration: underline; }
+
     .day-card-body .group {
       margin: 0.5rem 0;
       padding: 0.45rem 0.65rem;
@@ -936,7 +946,7 @@
 
           <div class="section-divider">行程規劃</div>
 
-          <article class="day-card">
+          <article class="day-card" id="day-d1">
             <div class="day-card-header">D1 · 8/6（四）</div>
             <div class="day-card-body">
               <div class="route">學校 → 桃園機場 → 濟州機場 → 享用晚餐<br>～特別加贈韓式炸雞（每房半隻雞）～</div>
@@ -963,7 +973,7 @@
             </div>
           </article>
 
-          <article class="day-card">
+          <article class="day-card" id="day-d3">
             <div class="day-card-header">D3 · 8/8（六）</div>
             <div class="day-card-body">
               <div class="route">飯店 → 城山日出峰（UNESCO 世界自然遺產）、涉地可支 → 穿梭葛扎瓦原始林～Ecoland 森林小火車 → 濟州海苔博物館＋韓服拍照體驗 → 漢挐樹木園夜市體驗</div>
@@ -976,7 +986,7 @@
             </div>
           </article>
 
-          <article class="day-card">
+          <article class="day-card" id="day-d4">
             <div class="day-card-header">D4 · 8/9（日）</div>
             <div class="day-card-body">
               <div class="route">飯店 → 茶道建築之美～O'sulloc 雪綠茶博物館＋Innisfree 濟州小屋 → 濟州最大樂園～神話世界 或 史努比樂園（二擇一） → 國寶級無語言劇～亂打秀（NANTA）</div>
@@ -989,7 +999,7 @@
             </div>
           </article>
 
-          <article class="day-card">
+          <article class="day-card" id="day-d5">
             <div class="day-card-header">D5 · 8/10（一）</div>
             <div class="day-card-body">
               <div class="route">飯店 → 濟州機場 → 桃園機場 → 快樂賦歸～學校</div>
@@ -1062,15 +1072,51 @@
     const CULTURE_CUP_URL = "https://www.taiwanmusic.org/";
     const CULTURE_CUP_PDF_URL = "https://www.taiwanmusic.org/2026TP.pdf";
 
+    const TEXT_LINKS = [
+      { text: "O'sulloc 雪綠茶博物館", href: "https://www.osulloc.com/" },
+      { text: "Innisfree 濟州小屋", href: "https://www.innisfree.com/kr/ko/discover-green-tea/from-jeju/island" },
+      { text: "Ecoland 森林小火車", href: "https://www.ecolandjeju.co.kr/" },
+      { text: "穿梭葛扎瓦原始林", href: "https://www.ecolandjeju.co.kr/" },
+      { text: "西歸浦每日偶來市場", href: "https://chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=91174" },
+      { text: "濟州國際管樂節", href: "https://www.jiwef.org/" },
+      { text: "濟州海苔博物館", href: "https://www.visitjeju.net/cn/detail/view?contentsid=CONT_000000000501498" },
+      { text: "榮富國小濟州5天 D5", href: "#day-d5", internal: true },
+      { text: "榮富國小濟州5天 D4", href: "#day-d4", internal: true },
+      { text: "榮富國小濟州5天 D3", href: "#day-d3", internal: true },
+      { text: "榮富國小濟州5天 D2", href: "#day-d2", internal: true },
+      { text: "榮富國小濟州5天 D1", href: "#day-d1", internal: true },
+      { text: "史努比樂園", href: "https://www.snoopygarden.com/" },
+      { text: "城山日出峰", href: "https://big5chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=95190" },
+      { text: "正房瀑布", href: "https://big5chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=95012" },
+      { text: "漢挐樹木園", href: "https://big5chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=111875" },
+      { text: "小熊博物館", href: "https://www.teddybearmuseum.co.kr/chinese/" },
+      { text: "神話世界", href: "https://www.shinhwaworld.com/" },
+      { text: "涉地可支", href: "https://big5chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=95014" },
+      { text: "陽明山花園教室", href: "https://www.ymsnp.gov.tw/" },
+      { text: "亂打秀", href: "https://nanta.co.kr/" },
+      { text: "史努比", href: "https://www.snoopygarden.com/" },
+      { text: "小人國", href: "https://www.windowontheworld.com.tw/" }
+    ].sort((a, b) => b.text.length - a.text.length);
+
+    function linkifyText(text) {
+      if (/<a[\s>]/i.test(text)) return text;
+      let out = text;
+      for (const { text: label, href, internal } of TEXT_LINKS) {
+        if (!out.includes(label)) continue;
+        const attrs = internal ? "" : ' target="_blank" rel="noopener noreferrer"';
+        out = out.split(label).join(`<a href="${href}"${attrs}>${label}</a>`);
+      }
+      return out;
+    }
+
     function formatNote(text) {
-      if (!text.includes("文化盃")) return text;
       let out = text;
       if (out.includes("文化盃比賽")) {
         out = out.replace(/文化盃比賽/g, `<a href="${CULTURE_CUP_PDF_URL}" target="_blank" rel="noopener noreferrer">文化盃比賽</a>`);
-      } else {
+      } else if (out.includes("文化盃")) {
         out = out.replace(/文化盃/g, `<a href="${CULTURE_CUP_URL}" target="_blank" rel="noopener noreferrer">文化盃</a>`);
       }
-      return out;
+      return linkifyText(out);
     }
 
     const schedule = {
@@ -1217,6 +1263,10 @@
 
     renderMonth(2026, 7, "july-body");
     renderMonth(2026, 8, "august-body");
+
+    document.querySelectorAll(".day-card-body .route, .day-card-body .group").forEach(el => {
+      el.innerHTML = linkifyText(el.innerHTML);
+    });
   </script>
 </body>
 </html>
