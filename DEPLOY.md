@@ -13,36 +13,28 @@ https://amdocsmail.github.io/jeju-schedule/
 ## 1. 在 GitHub 建立 repository
 
 1. 登入 [GitHub](https://github.com)（帳號 `amdocsmail`）
-2. 點 **Create repository**
-3. **Repository name**：`jeju-schedule`
-4. 可設 **Private** 或 **Public**（Pages 兩者皆可，Public 較單純）
-5. **不要**勾選 Add README / .gitignore（保持空 repo，避免衝突）
-6. 建立後複製網址：`https://github.com/amdocsmail/jeju-schedule.git`
+2. 開啟快速建立頁：[建立 jeju-schedule](https://github.com/new?name=jeju-schedule&owner=amdocsmail)
+3. 可設 **Private** 或 **Public**
+4. **不要**勾選 Add README / .gitignore
+5. 按 **Create repository**
 
-## 2. 本機推送（第一次）
-
-在專案資料夾執行：
+## 2. 本機推送
 
 ```powershell
 cd "C:\Users\erichsu\Projects\jeju-schedule"
-
-git init
-git branch -M main
-git add .
-git commit -m "Add Jeju schedule site for GitHub Pages"
-git remote add origin https://github.com/amdocsmail/jeju-schedule.git
 git push -u origin main
 ```
 
-> 推送時若跳出 GitHub 登入視窗，照著授權即可（與 expiry-notify 相同）。
+> 推送時若跳出 GitHub 登入視窗，照著授權即可。
 
 ## 3. 啟用 GitHub Pages
 
-1. 開啟 repo → **Settings** → 左側 **Pages**
-2. **Build and deployment** → **Source** 選 **Deploy from a branch**
-3. **Branch**：`main`　**Folder**：`/ (root)`
-4. 按 **Save**
-5. 等 1～3 分鐘，頁面上會出現綠色網址：`https://amdocsmail.github.io/jeju-schedule/`
+1. Repo → **Settings** → **Pages**
+2. **Build and deployment** → **Source** 選 **GitHub Actions**
+3. 推送後 Actions 會自動部署（約 1～2 分鐘）
+4. 網址：`https://amdocsmail.github.io/jeju-schedule/`
+
+（也可改用 **Deploy from a branch** → `main` / `/ (root)`，效果相同。）
 
 ## 4. 之後更新網站
 
