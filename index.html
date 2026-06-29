@@ -357,6 +357,27 @@
       background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
     }
 
+    .cup-notice {
+      margin: 0.85rem 0 0;
+      text-align: center;
+    }
+
+    .cup-notice img {
+      display: block;
+      max-width: 100%;
+      width: min(520px, 100%);
+      margin: 0 auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--cup-border);
+      background: #fff;
+    }
+
+    .cup-notice figcaption {
+      margin-top: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
     .info-card .title { font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
     .info-card .meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.5rem; }
 
@@ -724,12 +745,19 @@
     <section class="info-section" id="culture-cup">
       <h2>文化盃比賽 · 2026/7/23（四）</h2>
       <div class="info-card cup">
-        <div class="title">第 33 場 · 14-02 小號_國小中年級組 · 徐柏勛</div>
-        <div class="meta">14:30 開始 · 蘆洲功學社音樂廳</div>
+        <div class="title">14-02 小號_國小中年級組 (A) · 徐柏勛</div>
+        <div class="meta">第 33 場 - 4 · 演奏序 1 · 14:30 開始</div>
         <ul>
-          <li>地點：新北市蘆洲區中山二路162號2樓</li>
+          <li>報到：14:15 前（賽前 15 分鐘）</li>
+          <li>地點：蘆洲功學社音樂廳 · 新北市蘆洲區中山二路162號2樓</li>
+          <li>報名編號：00000210</li>
+          <li>自選曲：英國組曲 第 1、5 樂章（R. Bernard Fitzgerald 編）</li>
           <li>當日請假：韓國濟州島加練</li>
         </ul>
+        <figure class="cup-notice">
+          <img src="culture-cup-notice-20260723.png" alt="2026台北文化盃音樂大賽比賽通知單 · 小號-徐柏勛" loading="lazy" width="520" height="680">
+          <figcaption>比賽通知單 · 掃 QR Code 報到</figcaption>
+        </figure>
         <div class="info-links">
           <a href="https://www.taiwanmusic.org/2026TP.pdf" target="_blank" rel="noopener noreferrer">2026 賽程 PDF</a>
           <a href="https://www.taiwanmusic.org/" target="_blank" rel="noopener noreferrer">文化盃官網</a>
@@ -1002,7 +1030,7 @@
       "2026-07-23": {
         bg: "cup",
         redNotes: ["請假（濟州加練）"],
-        notes: ["文化盃比賽 14:30", "小號-徐柏勛·國小中年級組"]
+        notes: ["文化盃比賽 14:30", "小號·序1 徐柏勛"]
       },
       "2026-07-24": { notes: ["何嘉仁整天"] },
       "2026-07-26": { notes: ["青少管樂成發(新莊文化)"] },
