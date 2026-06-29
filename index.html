@@ -40,6 +40,8 @@
       --green-border: #86efac;
       --orange: #ffedd5;
       --orange-border: #fdba74;
+      --cup: #f3e8ff;
+      --cup-border: #c4b5fd;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -175,6 +177,7 @@
     .swatch.yellow { background: #eab308; }
     .swatch.green { background: #22c55e; }
     .swatch.orange { background: #f97316; }
+    .swatch.cup { background: #8b5cf6; }
 
     .month-block {
       background: var(--card);
@@ -252,6 +255,7 @@
     .calendar td.bg-yellow { background: var(--yellow); border-color: var(--yellow-border); }
     .calendar td.bg-green { background: var(--green); border-color: var(--green-border); }
     .calendar td.bg-orange { background: var(--orange); border-color: var(--orange-border); }
+    .calendar td.bg-cup { background: var(--cup); border-color: var(--cup-border); }
 
     .cell-header { margin-bottom: 0.25rem; }
 
@@ -269,6 +273,7 @@
     }
 
     .calendar td.bg-orange .cell-date,
+    .calendar td.bg-cup .cell-date,
     .calendar td.bg-blue .cell-date,
     .calendar td.bg-pink .cell-date,
     .calendar td.bg-yellow .cell-date,
@@ -676,6 +681,7 @@
     <div class="legend">
       <span class="legend-item"><span class="swatch blue"></span>青少管樂</span>
       <span class="legend-item"><span class="swatch pink"></span>濟州加練</span>
+      <span class="legend-item"><span class="swatch cup"></span>文化盃比賽請假</span>
       <span class="legend-item"><span class="swatch yellow"></span>A/B 團管樂</span>
       <span class="legend-item"><span class="swatch green"></span>濟州集訓</span>
       <span class="legend-item"><span class="swatch orange"></span>榮富國小濟州5天</span>
@@ -963,7 +969,7 @@
       },
       "2026-07-21": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
       "2026-07-22": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
-      "2026-07-23": { bg: "pink", notes: ["文化盃比賽（小號）請假"] },
+      "2026-07-23": { bg: "cup", notes: ["文化盃比賽（小號）請假"] },
       "2026-07-24": { notes: ["何嘉仁整天"] },
       "2026-07-26": { notes: ["青少管樂成發(新莊文化)"] },
       "2026-07-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
