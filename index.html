@@ -402,6 +402,35 @@
 
     .concert-program li { margin-bottom: 0.2rem; }
 
+    .trip-schedule {
+      font-size: 0.84rem;
+      margin: 0.35rem 0 0.5rem;
+      padding: 0;
+      list-style: none;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .trip-schedule li {
+      margin-bottom: 0.35rem;
+      padding-left: 0.55rem;
+      border-left: 2px solid #fda4af;
+    }
+
+    .trip-schedule .time {
+      font-weight: 700;
+      color: #be123c;
+      margin-right: 0.35rem;
+    }
+
+    .trip-schedule a {
+      color: #0d9488;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .trip-schedule a:hover { text-decoration: underline; }
+
     .cup-notice {
       margin: 0.85rem 0 0;
       text-align: center;
@@ -853,28 +882,42 @@
 
       <div class="info-card rose" id="family-0703">
         <div class="title">7/3（五）19:00 · 熟度精緻鍋物昌平店</div>
-        <div class="meta">inline 已確認預訂 · 6 人</div>
+        <div class="meta">晚餐 6 位 · 鋼琴、小提琴要請假</div>
         <ul>
           <li>地址：新北市新莊區昌平街 33 號</li>
+          <li>訂購電話：<a href="tel:0901183052">0901-183-052</a></li>
         </ul>
         <div class="info-links">
           <a href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%B0%E5%8C%97%E5%B8%82%E6%96%B0%E8%8E%8A%E5%8D%80%E6%98%8C%E5%B9%B3%E8%A1%9733%E8%99%9F" target="_blank" rel="noopener noreferrer">地圖</a>
         </div>
       </div>
 
+      <div class="info-card rose" id="family-0704">
+        <div class="title">7/4（六）· 台北一日遊</div>
+        <ul class="trip-schedule">
+          <li><span class="time">08:00</span>吃早午餐（Daily）</li>
+          <li><span class="time">10:00</span>出門</li>
+          <li><span class="time">11:30</span><a href="https://maps.app.goo.gl/PihxzTqbwTZknVmAA?g_st=il" target="_blank" rel="noopener noreferrer">深坑老街</a></li>
+          <li><span class="time">14:30</span><a href="https://maps.app.goo.gl/vojc6oHWjUWNTmrx7" target="_blank" rel="noopener noreferrer">艋舺龍山寺拜拜</a></li>
+          <li><span class="time">18:00</span><a href="https://share.google.com/P9EkGaNyaEhiw6U7A" target="_blank" rel="noopener noreferrer">寧夏夜市</a></li>
+          <li><span class="time">19:30</span><a href="https://share.google.com/jVkv3bbjAXfBgMbXo" target="_blank" rel="noopener noreferrer">大稻埕碼頭貨櫃市集</a></li>
+        </ul>
+      </div>
+
       <div class="info-card rose" id="family-0705">
-        <div class="title">7/5（日）· 台北 一日行程</div>
-        <div class="meta">14:00 觀景台 · 17:30 晚餐</div>
+        <div class="title">7/5（日）· 台北一日行程</div>
+        <ul class="trip-schedule">
+          <li><span class="time">09:00</span>吃早午餐（Daily）</li>
+          <li><span class="time">11:00</span><a href="https://share.google.com/Y51afXAXd9di4yo5S" target="_blank" rel="noopener noreferrer">行天宮拜拜</a></li>
+          <li><span class="time">14:00</span><a href="https://maps.app.goo.gl/ACARGNPqLbftqdC68?g_st=il" target="_blank" rel="noopener noreferrer">台北101觀景台</a> · 親子套票 2 組、敬老票 2 張</li>
+          <li><span class="time">17:30</span><a href="https://maps.app.goo.gl/9BibCL99DKrcCguy6?g_st=il" target="_blank" rel="noopener noreferrer">饗食天堂信義店</a>（已訂位）4 大 2 小</li>
+        </ul>
         <ul>
-          <li><strong>14:00 台北101觀景台</strong> · 親子套票 2 組、敬老票 2 張（89F）</li>
-          <li><strong>17:30 饗食天堂信義店</strong> · 6 人（4 大 2 小）· 訂位成功已付款</li>
-          <li>饗食天堂地址：台北市信義區松壽路 12 號 6 樓（ATT 4 FUN）</li>
           <li>饗食天堂電話：(02)7737-5889 · 訂位編號 TPSY2026070541054</li>
         </ul>
         <div class="info-links">
           <a href="https://www.taipei-101.com.tw/" target="_blank" rel="noopener noreferrer">台北101官網</a>
           <a href="https://www.eatogether.com.tw/" target="_blank" rel="noopener noreferrer">饗食天堂</a>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=ATT+4+FUN" target="_blank" rel="noopener noreferrer">ATT 4 FUN 地圖</a>
         </div>
       </div>
 
@@ -1222,8 +1265,14 @@
 
     const TEXT_LINKS = [
       { text: "五月天演唱會", href: "#family-0710", internal: true },
+      { text: "台北一日遊", href: "#family-0704", internal: true },
+      { text: "大稻埕碼頭", href: "https://share.google.com/jVkv3bbjAXfBgMbXo" },
+      { text: "艋舺龍山寺", href: "https://maps.app.goo.gl/vojc6oHWjUWNTmrx7" },
+      { text: "行天宮拜拜", href: "https://share.google.com/Y51afXAXd9di4yo5S" },
       { text: "饗食天堂信義", href: "#family-0705", internal: true },
-      { text: "熟度鍋物昌平", href: "#family-0703", internal: true },
+      { text: "熟度晚餐6位", href: "#family-0703", internal: true },
+      { text: "深坑老街", href: "https://maps.app.goo.gl/PihxzTqbwTZknVmAA?g_st=il" },
+      { text: "寧夏夜市", href: "https://share.google.com/P9EkGaNyaEhiw6U7A" },
       { text: "台北101", href: "https://www.taipei-101.com.tw/" },
       { text: "臺北大巨蛋", href: "https://www.tpda.gov.tw/" },
       { text: "O'sulloc 雪綠茶博物館", href: "https://www.osulloc.com/" },
@@ -1287,11 +1336,16 @@
       "2026-07-02": { notes: ["何嘉仁整天"] },
       "2026-07-03": {
         bg: "rose",
-        notes: ["何嘉仁整天", "19:00 熟度鍋物昌平", "6人"]
+        redNotes: ["鋼琴小提琴請假"],
+        notes: ["何嘉仁整天", "19:00 熟度晚餐6位"]
+      },
+      "2026-07-04": {
+        bg: "rose",
+        notes: ["台北一日遊", "深坑·龍山寺", "寧夏·大稻埕"]
       },
       "2026-07-05": {
         bg: "rose",
-        notes: ["14:00 台北101", "17:30 饗食天堂信義", "6人"]
+        notes: ["行天宮拜拜", "14:00 台北101", "17:30 饗食天堂信義"]
       },
       "2026-07-06": { notes: ["何嘉仁整天"] },
       "2026-07-07": { notes: ["何嘉仁整天"] },
