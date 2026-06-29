@@ -512,6 +512,11 @@
       border-color: #34d399;
     }
 
+    .highlight-card > span:first-child {
+      color: #047857;
+      font-weight: 600;
+    }
+
     .highlight-card a {
       color: #047857;
       text-decoration: none;
@@ -520,10 +525,17 @@
 
     .highlight-card a:hover { color: #065f46; }
 
-    .highlight-card .ref {
+    .highlight-card .ref a {
       font-size: 0.68rem;
-      font-weight: 400;
+      font-weight: 500;
       color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--link);
+    }
+
+    .highlight-card .ref a:hover {
+      border-bottom-style: solid;
+      color: #0c4a6e;
     }
 
     .highlight-card .ref-note {
@@ -771,28 +783,28 @@
             <h3>規劃亮點</h3>
             <div class="highlights-grid">
               <div class="highlight-card">
-                <a href="https://www.jiwef.org/" target="_blank" rel="noopener noreferrer">國際展演<br>與藝術實踐</a>
-                <span class="ref">濟州國際管樂節官網</span>
+                <span>國際展演<br>與藝術實踐</span>
+                <span class="ref"><a href="https://www.jiwef.org/" target="_blank" rel="noopener noreferrer">濟州國際管樂節官網 →</a></span>
               </div>
               <div class="highlight-card">
-                <a href="https://chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=91174" target="_blank" rel="noopener noreferrer">傳統市場<br>與生活美學</a>
-                <span class="ref">西歸浦每日偶來市場</span>
+                <span>傳統市場<br>與生活美學</span>
+                <span class="ref"><a href="https://chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=91174" target="_blank" rel="noopener noreferrer">西歸浦每日偶來市場 →</a></span>
               </div>
               <div class="highlight-card">
-                <a href="https://big5chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=95190" target="_blank" rel="noopener noreferrer">世界自然遺產<br>與生態學習</a>
-                <span class="ref">城山日出峰 UNESCO</span>
+                <span>世界自然遺產<br>與生態學習</span>
+                <span class="ref"><a href="https://big5chinese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=95190" target="_blank" rel="noopener noreferrer">城山日出峰 UNESCO →</a></span>
               </div>
               <div class="highlight-card">
                 <span>依專業屬性<br>分組分工</span>
-                <span class="ref-note">演出組／觀光組（行程 D2）</span>
+                <span class="ref"><a href="#day-d2">演出組／觀光組（行程 D2）→</a></span>
               </div>
               <div class="highlight-card">
-                <a href="https://www.visitjeju.net/cn/detail/view?contentsid=CONT_000000000500731" target="_blank" rel="noopener noreferrer">在地人文<br>音樂交流</a>
-                <span class="ref">Visit Jeju · 濟州文化</span>
+                <span>在地人文<br>音樂交流</span>
+                <span class="ref"><a href="https://www.visitjeju.net/cn/detail/view?contentsid=CONT_000000000500731" target="_blank" rel="noopener noreferrer">Visit Jeju · 濟州文化 →</a></span>
               </div>
               <div class="highlight-card">
-                <a href="https://whc.unesco.org/zh/list/1264/" target="_blank" rel="noopener noreferrer">地質科學<br>團隊協作</a>
-                <span class="ref">UNESCO 濟州火山島</span>
+                <span>地質科學<br>團隊協作</span>
+                <span class="ref"><a href="https://whc.unesco.org/zh/list/1264/" target="_blank" rel="noopener noreferrer">UNESCO 濟州火山島 →</a></span>
               </div>
             </div>
           </div>
@@ -812,7 +824,7 @@
             </div>
           </article>
 
-          <article class="day-card">
+          <article class="day-card" id="day-d2">
             <div class="day-card-header">D2 · 8/7（五）</div>
             <div class="day-card-body">
               <div class="group"><strong>演出組：</strong>濟州國際管樂節展演與交流 → 正式演出（暫定）</div>
