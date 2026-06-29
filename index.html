@@ -417,6 +417,9 @@
 
     .brochure-body { padding: 1.5rem 1.6rem 1.75rem; }
 
+    /* 確保團費區塊不顯示（含舊版快取） */
+    .brochure-price { display: none !important; }
+
     .brochure-block { margin-bottom: 1.5rem; }
 
     .brochure-block h3 {
@@ -609,7 +612,12 @@
       color: var(--muted);
     }
 
-    footer a { color: var(--link); text-decoration: none; }
+    footer .ver {
+      display: block;
+      margin-top: 0.35rem;
+      font-size: 0.72rem;
+      color: #94a3b8;
+    }
 
     @media (max-width: 640px) {
       .hero { padding: 2rem 1rem 1.75rem; }
@@ -666,7 +674,7 @@
     <section class="info-section" id="trip-brochure">
       <h2>榮富國小｜2026/8/6–8/10 濟州島 5 天</h2>
       <div class="pdf-actions">
-        <a class="pdf-btn" href="rongfu-jeju-20260806-0810.pdf" target="_blank" rel="noopener noreferrer">開啟完整行程 PDF</a>
+        <a class="pdf-btn" href="rongfu-jeju-20260806-0810.pdf?v=20260629" target="_blank" rel="noopener noreferrer">開啟完整行程 PDF</a>
       </div>
       <div class="trip-brochure">
         <div class="brochure-cover">
@@ -884,6 +892,7 @@
 
     <footer>
       榮富國小管樂團 · 濟州島 5 天行程
+      <span class="ver">頁面版本 2026/6/29 · 已移除團費顯示</span>
     </footer>
   </div>
 
