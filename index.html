@@ -378,6 +378,53 @@
       color: var(--muted);
     }
 
+    .cup-order {
+      margin-top: 0.85rem;
+      overflow-x: auto;
+    }
+
+    .cup-order h4 {
+      margin: 0 0 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .cup-order table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      background: #fff;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--cup-border);
+    }
+
+    .cup-order th,
+    .cup-order td {
+      padding: 0.45rem 0.55rem;
+      text-align: left;
+      border-bottom: 1px solid #ede9fe;
+      vertical-align: top;
+    }
+
+    .cup-order th {
+      background: #ede9fe;
+      color: #5b21b6;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .cup-order tr:last-child td { border-bottom: none; }
+
+    .cup-order tr.self td {
+      background: #ddd6fe;
+      font-weight: 700;
+      color: #4c1d95;
+    }
+
+    .cup-order .piece { color: #64748b; font-size: 0.76rem; }
+
     .info-card .title { font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
     .info-card .meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.5rem; }
 
@@ -746,7 +793,7 @@
       <h2>文化盃比賽 · 2026/7/23（四）</h2>
       <div class="info-card cup">
         <div class="title">14-02 小號_國小中年級組 (A) · 徐柏勛</div>
-        <div class="meta">第 33 場 - 4 · 演奏序 1 · 14:30 開始</div>
+        <div class="meta">第 33 場 - 4 · 出場序 A-1 · 14:30 開始 · 共 11 人</div>
         <ul>
           <li>報到：14:15 前（賽前 15 分鐘）</li>
           <li>地點：蘆洲功學社音樂廳 · 新北市蘆洲區中山二路162號2樓</li>
@@ -754,6 +801,27 @@
           <li>自選曲：英國組曲 第 1、5 樂章（R. Bernard Fitzgerald 編）</li>
           <li>當日請假：韓國濟州島加練</li>
         </ul>
+        <div class="cup-order">
+          <h4>14:30 小號_國小中年級組 (A) 出場序</h4>
+          <table>
+            <thead>
+              <tr><th>序</th><th>姓名</th><th>自選曲</th></tr>
+            </thead>
+            <tbody>
+              <tr class="self"><td>A-1</td><td>徐柏勛</td><td>英國組曲 第1、5段<span class="piece"> · R. Bernard Fitzgerald 編</span></td></tr>
+              <tr><td>A-2</td><td>林洛</td><td>Trumpet Concerto No.3<span class="piece"> · V. Schelokov</span></td></tr>
+              <tr><td>A-3</td><td>沈樂奇</td><td>Antares<span class="piece"> · Vandercook</span></td></tr>
+              <tr><td>A-4</td><td>劉宇晨</td><td>la ci darem la mano<span class="piece"> · Mozart / Thielemann</span></td></tr>
+              <tr><td>A-5</td><td>林辰豫</td><td>椋鳥 Starling<span class="piece"> · Vander Cook</span></td></tr>
+              <tr><td>A-6</td><td>林宥穎</td><td>THE TECHNICIAN<span class="piece"> · R.M. Endresen</span></td></tr>
+              <tr><td>A-7</td><td>簡永翰</td><td>Glen Eden<span class="piece"> · Chas. W. Storm</span></td></tr>
+              <tr><td>A-8</td><td>林拓恩</td><td>Debonnaire<span class="piece"> · Vander Cook</span></td></tr>
+              <tr><td>A-9</td><td>陳禹熙</td><td>Petite Piece Concertante<span class="piece"> · Guillaume Balay</span></td></tr>
+              <tr><td>A-10</td><td>張景熙</td><td>Punchinello<span class="piece"> · Vander Cook</span></td></tr>
+              <tr><td>A-11</td><td>陳宥蓁</td><td>Scherzo 詼諧曲<span class="piece"> · Schelokov / Gohl</span></td></tr>
+            </tbody>
+          </table>
+        </div>
         <figure class="cup-notice">
           <img src="culture-cup-notice-20260723.png" alt="2026台北文化盃音樂大賽比賽通知單 · 小號-徐柏勛" loading="lazy" width="520" height="680">
           <figcaption>比賽通知單 · 掃 QR Code 報到</figcaption>
@@ -1030,7 +1098,7 @@
       "2026-07-23": {
         bg: "cup",
         redNotes: ["請假（濟州加練）"],
-        notes: ["文化盃比賽 14:30", "小號·序1 徐柏勛"]
+        notes: ["文化盃比賽 14:30", "小號·A-1 徐柏勛"]
       },
       "2026-07-24": { notes: ["何嘉仁整天"] },
       "2026-07-26": { notes: ["青少管樂成發(新莊文化)"] },
