@@ -6,313 +6,507 @@
   <title>115 年暑假行事曆｜7–8 月</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f4f6f8;
+      --bg-top: #e8f4fc;
+      --bg-bottom: #f0f7f4;
       --card: #ffffff;
-      --text: #1a1a1a;
-      --muted: #6b7280;
-      --weekend: #fafafa;
-      --adjacent: #eceff1;
-      --accent: #c62828;
-      --border: #d1d5db;
-      --link: #1565c0;
-      --header-green: #e8f5e9;
-      --blue: #e3f2fd;
-      --pink: #fce4ec;
-      --yellow: #fffde7;
-      --green: #e8f5e9;
-      --orange: #fff3e0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --weekend: #f8fafc;
+      --adjacent: #f1f5f9;
+      --accent: #dc2626;
+      --border: #e2e8f0;
+      --link: #0369a1;
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --header-green: linear-gradient(135deg, #ccfbf1 0%, #d1fae5 100%);
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --blue: #dbeafe;
+      --blue-border: #93c5fd;
+      --pink: #fce7f3;
+      --pink-border: #f9a8d4;
+      --yellow: #fef9c3;
+      --yellow-border: #fde047;
+      --green: #dcfce7;
+      --green-border: #86efac;
+      --orange: #ffedd5;
+      --orange-border: #fdba74;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 40%, #fafafa 100%);
+      background-attachment: fixed;
       color: var(--text);
-      line-height: 1.45;
-      padding: 2rem 1rem 3rem;
+      line-height: 1.55;
+      padding: 0 1rem 4rem;
+      min-height: 100vh;
     }
 
-    .page { max-width: 1100px; margin: 0 auto; }
+    .page { max-width: 1080px; margin: 0 auto; }
 
-    header { text-align: center; margin-bottom: 1.75rem; }
-    header h1 { font-size: 1.65rem; font-weight: 700; margin-bottom: 0.3rem; }
-    header p { color: var(--muted); font-size: 0.95rem; }
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1.25rem 2rem;
+      margin: 0 -1rem 2rem;
+      background: linear-gradient(135deg, #0f766e 0%, #0d9488 35%, #14b8a6 70%, #2dd4bf 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 80%, rgba(255,255,255,0.15) 0%, transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(255,255,255,0.12) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .hero h1 {
+      font-family: "Noto Serif TC", "Noto Sans TC", serif;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.92;
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      margin-top: 0.65rem;
+      font-size: 0.88rem;
+      opacity: 0.85;
+    }
 
     .legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.65rem 1.25rem;
+      gap: 0.5rem;
       justify-content: center;
-      margin-bottom: 1.75rem;
-      font-size: 0.82rem;
+      margin-bottom: 2rem;
+      padding: 0.85rem 1rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
     }
 
-    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
 
     .swatch {
-      width: 1rem;
-      height: 1rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      border: none;
+      flex-shrink: 0;
     }
 
-    .swatch.blue { background: var(--blue); }
-    .swatch.pink { background: var(--pink); }
-    .swatch.yellow { background: var(--yellow); }
-    .swatch.green { background: var(--green); }
-    .swatch.orange { background: var(--orange); }
+    .swatch.blue { background: #3b82f6; }
+    .swatch.pink { background: #ec4899; }
+    .swatch.yellow { background: #eab308; }
+    .swatch.green { background: #22c55e; }
+    .swatch.orange { background: #f97316; }
 
     .month-block {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem;
+      border-radius: var(--radius);
+      padding: 1.5rem;
       margin-bottom: 1.75rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow-md);
       overflow-x: auto;
     }
 
     .month-title {
+      font-family: "Noto Serif TC", serif;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.15rem;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+    }
+
+    .month-title::before,
+    .month-title::after {
+      content: "";
+      flex: 1;
+      max-width: 3rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #99f6e4, transparent);
     }
 
     .calendar {
       width: 100%;
       min-width: 680px;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 3px;
       table-layout: fixed;
     }
 
     .calendar th {
-      padding: 0.45rem 0.2rem;
-      font-weight: 500;
-      font-size: 0.85rem;
-      border-bottom: 2px solid var(--border);
+      padding: 0.55rem 0.25rem;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: var(--primary-dark);
       background: var(--header-green);
+      border-radius: 8px;
     }
+
+    .calendar th:first-child,
+    .calendar th:last-child { color: #b45309; }
 
     .calendar td {
-      border: 1px solid var(--border);
+      border: 1px solid transparent;
+      border-radius: 8px;
       vertical-align: top;
-      min-height: 5rem;
+      min-height: 5.2rem;
       height: auto;
-      padding: 0.3rem 0.35rem;
+      padding: 0.4rem 0.45rem;
+      transition: transform 0.12s, box-shadow 0.12s;
     }
 
-    .calendar td.adjacent { background: var(--adjacent); color: #9ca3af; }
+    .calendar td:not(.adjacent):hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+      z-index: 1;
+      position: relative;
+    }
+
+    .calendar td.adjacent { background: var(--adjacent); color: #94a3b8; }
     .calendar td.weekend:not([class*="bg-"]) { background: var(--weekend); }
-    .calendar td.bg-blue { background: var(--blue); }
-    .calendar td.bg-pink { background: var(--pink); }
-    .calendar td.bg-yellow { background: var(--yellow); }
-    .calendar td.bg-green { background: var(--green); }
-    .calendar td.bg-orange { background: var(--orange); }
+    .calendar td.bg-blue { background: var(--blue); border-color: var(--blue-border); }
+    .calendar td.bg-pink { background: var(--pink); border-color: var(--pink-border); }
+    .calendar td.bg-yellow { background: var(--yellow); border-color: var(--yellow-border); }
+    .calendar td.bg-green { background: var(--green); border-color: var(--green-border); }
+    .calendar td.bg-orange { background: var(--orange); border-color: var(--orange-border); }
 
-    .cell-header { margin-bottom: 0.2rem; }
-    .cell-date { font-weight: 700; font-size: 0.9rem; }
+    .cell-header { margin-bottom: 0.25rem; }
 
-    .cell-body { font-size: 0.72rem; font-weight: 500; }
-    .cell-body div { margin-bottom: 0.15rem; }
-    .cell-body .red { color: var(--accent); }
-    .cell-body .note { color: #333; }
+    .cell-date {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.6rem;
+      height: 1.6rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.7);
+      color: var(--text);
+    }
+
+    .calendar td.bg-orange .cell-date,
+    .calendar td.bg-blue .cell-date,
+    .calendar td.bg-pink .cell-date,
+    .calendar td.bg-yellow .cell-date,
+    .calendar td.bg-green .cell-date {
+      background: rgba(255,255,255,0.85);
+    }
+
+    .cell-body { font-size: 0.71rem; font-weight: 500; }
+    .cell-body div { margin-bottom: 0.18rem; line-height: 1.35; }
+    .cell-body .red { color: var(--accent); font-weight: 600; }
+    .cell-body .note { color: #334155; }
+
     .cell-body .flight {
       display: block;
-      margin-top: 0.15rem;
-      font-size: 0.68rem;
+      margin-top: 0.2rem;
+      padding: 0.2rem 0.35rem;
+      font-size: 0.65rem;
       color: var(--text);
       font-weight: 400;
+      background: rgba(255,255,255,0.6);
+      border-radius: 4px;
     }
 
     .cell-body a {
       color: var(--link);
       text-decoration: none;
-      border-bottom: 1px dotted var(--link);
+      font-weight: 500;
     }
 
-    .cell-body a:hover { border-bottom-style: solid; }
+    .cell-body a:hover { text-decoration: underline; }
 
     .info-section {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius);
+      padding: 1.5rem 1.6rem;
       margin-bottom: 1.75rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--shadow-md);
     }
 
     .info-section h2 {
-      font-size: 1.05rem;
-      margin-bottom: 0.85rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--border);
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #ccfbf1;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-section h2::before {
+      content: "";
+      width: 4px;
+      height: 1.1rem;
+      background: linear-gradient(180deg, #14b8a6, #0d9488);
+      border-radius: 2px;
     }
 
     .info-card {
+      border: 1px solid var(--border);
       border-left: 4px solid var(--link);
-      padding: 0.85rem 1rem;
-      background: #f8fafc;
-      border-radius: 0 6px 6px 0;
+      padding: 1rem 1.15rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: var(--radius-sm);
       margin-bottom: 0.85rem;
+      transition: box-shadow 0.15s;
     }
 
+    .info-card:hover { box-shadow: var(--shadow-sm); }
     .info-card:last-child { margin-bottom: 0; }
-    .info-card.orange { border-left-color: #ef6c00; }
-    .info-card .title { font-weight: 700; margin-bottom: 0.35rem; }
-    .info-card .meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.35rem; }
+
+    .info-card.orange {
+      border-left-color: #f97316;
+      background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    }
+
+    .info-card .title { font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
+    .info-card .meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.5rem; }
+
     .info-card ul {
       font-size: 0.88rem;
       margin: 0.35rem 0 0.5rem 1.1rem;
+      color: #475569;
     }
 
-    .info-card ul li { margin-bottom: 0.2rem; }
+    .info-card ul li { margin-bottom: 0.25rem; }
 
     .info-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem 1rem;
-      font-size: 0.85rem;
+      gap: 0.5rem 0.85rem;
+      font-size: 0.84rem;
+      align-items: center;
     }
 
-    .info-links a { color: var(--link); text-decoration: none; }
-    .info-links a:hover { text-decoration: underline; }
+    .info-links a {
+      color: var(--link);
+      text-decoration: none;
+      padding: 0.3rem 0.65rem;
+      background: #fff;
+      border: 1px solid #bae6fd;
+      border-radius: 6px;
+      transition: background 0.12s;
+    }
+
+    .info-links a:hover { background: #e0f2fe; }
 
     .info-note {
       font-size: 0.82rem;
-      color: var(--muted);
+      color: #92400e;
       margin-bottom: 0.85rem;
-      padding: 0.5rem 0.75rem;
-      background: #fff8e1;
-      border-radius: 6px;
-      border: 1px solid #ffe082;
+      padding: 0.65rem 0.9rem;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border-radius: var(--radius-sm);
+      border: 1px solid #fde68a;
     }
 
     .trip-brochure {
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: var(--radius);
       overflow: hidden;
       background: #fff;
+      box-shadow: var(--shadow-sm);
     }
 
     .brochure-cover {
-      background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #43a047 100%);
+      background: linear-gradient(145deg, #064e3b 0%, #0f766e 40%, #14b8a6 100%);
       color: #fff;
       text-align: center;
-      padding: 2rem 1.25rem 1.75rem;
+      padding: 2.25rem 1.5rem 2rem;
+      position: relative;
     }
 
-    .brochure-cover .org { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.08em; }
+    .brochure-cover::after {
+      content: "🎵";
+      position: absolute;
+      right: 1.5rem;
+      top: 1.5rem;
+      font-size: 2rem;
+      opacity: 0.25;
+    }
+
+    .brochure-cover .org {
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
     .brochure-cover .event {
       font-size: 1.05rem;
-      margin: 0.65rem 0 0.35rem;
+      margin: 0.7rem 0 0.4rem;
       font-weight: 500;
+      opacity: 0.95;
     }
 
     .brochure-cover .dates {
-      font-size: 0.95rem;
-      opacity: 0.92;
+      font-size: 0.92rem;
+      opacity: 0.88;
+      padding: 0.35rem 0.85rem;
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border-radius: 999px;
+      margin-top: 0.25rem;
     }
 
-    .brochure-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .brochure-body { padding: 1.5rem 1.6rem 1.75rem; }
 
     .brochure-price {
       text-align: center;
-      font-size: 1.1rem;
+      font-family: "Noto Serif TC", serif;
+      font-size: 1.15rem;
       font-weight: 700;
-      padding: 0.85rem;
-      margin-bottom: 1.25rem;
-      background: #f1f8e9;
-      border-radius: 8px;
-      border: 1px solid #c5e1a5;
+      padding: 1rem;
+      margin-bottom: 1.35rem;
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-radius: var(--radius-sm);
+      border: 1px solid #6ee7b7;
+      color: #065f46;
     }
 
-    .brochure-block { margin-bottom: 1.35rem; }
+    .brochure-block { margin-bottom: 1.5rem; }
 
     .brochure-block h3 {
       font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
-      padding-bottom: 0.3rem;
-      border-bottom: 2px solid #2e7d32;
-      color: #1b5e20;
+      margin-bottom: 0.55rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid #99f6e4;
+      color: var(--primary-dark);
     }
 
     .brochure-block p,
-    .brochure-block li {
-      font-size: 0.88rem;
-      line-height: 1.6;
-    }
-
-    .brochure-block ul {
-      margin: 0.35rem 0 0 1.15rem;
-    }
-
-    .brochure-block li { margin-bottom: 0.25rem; }
+    .brochure-block li { font-size: 0.88rem; line-height: 1.65; color: #475569; }
+    .brochure-block ul { margin: 0.4rem 0 0 1.15rem; }
+    .brochure-block li { margin-bottom: 0.28rem; }
 
     .flight-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       margin-top: 0.5rem;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
     }
 
     .flight-table th,
     .flight-table td {
       border: 1px solid var(--border);
-      padding: 0.45rem 0.6rem;
+      padding: 0.5rem 0.65rem;
       text-align: left;
     }
 
     .flight-table th {
-      background: #e8f5e9;
+      background: linear-gradient(135deg, #ccfbf1, #d1fae5);
       font-weight: 600;
+      color: var(--primary-dark);
     }
 
-    .flight-table .ref { color: var(--muted); }
-    .flight-table .actual { background: #fff8e1; font-weight: 600; }
+    .flight-table .ref { color: var(--muted); background: #f8fafc; }
+    .flight-table .actual { background: #fffbeb; font-weight: 600; color: #92400e; }
 
     .highlights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.65rem;
-      margin-top: 0.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.55rem;
     }
 
     .highlight-card {
-      background: #f1f8e9;
-      border: 1px solid #c5e1a5;
-      border-radius: 8px;
-      padding: 0.65rem 0.75rem;
+      background: linear-gradient(160deg, #f0fdf4 0%, #ecfdf5 100%);
+      border: 1px solid #bbf7d0;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 0.75rem;
       text-align: center;
       font-size: 0.82rem;
       font-weight: 500;
-      line-height: 1.4;
+      line-height: 1.45;
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
-      transition: box-shadow 0.15s, border-color 0.15s;
+      gap: 0.4rem;
+      transition: transform 0.15s, box-shadow 0.15s;
     }
 
     .highlight-card:hover {
-      border-color: #66bb6a;
-      box-shadow: 0 2px 8px rgba(46, 125, 50, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.15);
+      border-color: #34d399;
     }
 
     .highlight-card a {
-      color: #1b5e20;
+      color: #047857;
       text-decoration: none;
       font-weight: 600;
     }
 
-    .highlight-card a:hover { text-decoration: underline; }
+    .highlight-card a:hover { color: #065f46; }
 
     .highlight-card .ref {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 400;
       color: var(--link);
     }
@@ -325,94 +519,126 @@
 
     .section-divider {
       text-align: center;
+      font-family: "Noto Serif TC", serif;
       font-weight: 700;
-      font-size: 0.9rem;
-      color: #1b5e20;
-      margin: 1.5rem 0 1rem;
-      letter-spacing: 0.15em;
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      margin: 1.75rem 0 1.15rem;
+      letter-spacing: 0.2em;
     }
 
     .section-divider::before,
     .section-divider::after {
-      content: "—";
-      margin: 0 0.5rem;
-      color: #81c784;
+      content: "◆";
+      margin: 0 0.65rem;
+      font-size: 0.55rem;
+      color: #5eead4;
+      vertical-align: middle;
     }
 
     .day-card {
       border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: 0.85rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.9rem;
       overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.15s;
     }
+
+    .day-card:hover { box-shadow: var(--shadow-md); }
 
     .day-card-header {
-      background: #e8f5e9;
-      padding: 0.55rem 0.85rem;
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      padding: 0.65rem 1rem;
       font-weight: 700;
       font-size: 0.92rem;
-      color: #1b5e20;
-      border-bottom: 1px solid #c8e6c9;
+      color: #065f46;
     }
 
-    .day-card-body {
-      padding: 0.75rem 0.85rem;
-      font-size: 0.86rem;
-    }
-
-    .day-card-body .route {
-      margin-bottom: 0.5rem;
-      line-height: 1.55;
-    }
+    .day-card-body { padding: 0.9rem 1rem; font-size: 0.86rem; }
+    .day-card-body .route { margin-bottom: 0.5rem; line-height: 1.6; color: #475569; }
 
     .day-card-body .group {
-      margin: 0.45rem 0;
-      padding-left: 0.5rem;
-      border-left: 3px solid #66bb6a;
+      margin: 0.5rem 0;
+      padding: 0.45rem 0.65rem;
+      border-left: 3px solid #34d399;
+      background: #f0fdf4;
+      border-radius: 0 6px 6px 0;
+      color: #475569;
     }
 
-    .day-card-body .group strong { color: #2e7d32; }
+    .day-card-body .group strong { color: #047857; }
 
     .meal-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem 1rem;
-      margin-top: 0.55rem;
-      padding-top: 0.55rem;
-      border-top: 1px dashed var(--border);
-      font-size: 0.82rem;
+      gap: 0.4rem 0.85rem;
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px dashed #cbd5e1;
+      font-size: 0.8rem;
       color: var(--muted);
+    }
+
+    .meal-row span {
+      padding: 0.2rem 0.5rem;
+      background: #f8fafc;
+      border-radius: 4px;
     }
 
     .meal-row span strong { color: var(--text); }
 
-    .pdf-actions { margin-bottom: 1rem; }
+    .pdf-actions { margin-bottom: 1.15rem; }
 
     .pdf-btn {
       display: inline-flex;
       align-items: center;
-      padding: 0.55rem 1rem;
-      background: var(--link);
+      gap: 0.4rem;
+      padding: 0.65rem 1.25rem;
+      background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
       color: #fff;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 999px;
       font-size: 0.88rem;
-      font-weight: 500;
+      font-weight: 600;
+      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+      transition: transform 0.12s, box-shadow 0.12s;
     }
 
-    .pdf-btn:hover { background: #0d47a1; }
+    .pdf-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+    }
+
+    .pdf-btn::before { content: "📄"; font-size: 0.95rem; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--link); text-decoration: none; }
 
     @media (max-width: 640px) {
-      header h1 { font-size: 1.3rem; }
-      .cell-body { font-size: 0.65rem; }
+      .hero { padding: 2rem 1rem 1.75rem; }
+      .hero h1 { font-size: 1.45rem; }
+      .cell-body { font-size: 0.64rem; }
+      .month-block, .info-section { padding: 1.1rem; }
+      .brochure-body { padding: 1.1rem; }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header>
-      <h1>115 年暑假行事曆</h1>
-      <p>2026 年 7–8 月</p>
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">Summer 2026</div>
+        <h1>115 年暑假行事曆</h1>
+        <p>2026 年 7 – 8 月</p>
+        <p class="hero-sub">管樂練習 · 濟州國際管樂節參訪團</p>
+      </div>
     </header>
 
     <div class="legend">
@@ -666,6 +892,10 @@
         </div>
       </div>
     </section>
+
+    <footer>
+      榮富國小管樂團 · 濟州島 5 天行程
+    </footer>
   </div>
 
   <script>
