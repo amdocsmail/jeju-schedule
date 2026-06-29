@@ -140,6 +140,28 @@
       border: 1px solid var(--border);
     }
 
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: -1rem 0 2rem;
+    }
+
+    .quick-links a {
+      font-size: 0.84rem;
+      color: var(--link);
+      text-decoration: none;
+      padding: 0.45rem 0.9rem;
+      background: #fff;
+      border: 1px solid #bae6fd;
+      border-radius: 999px;
+      box-shadow: var(--shadow-sm);
+      transition: background 0.12s;
+    }
+
+    .quick-links a:hover { background: #e0f2fe; }
+
     .swatch {
       width: 0.75rem;
       height: 0.75rem;
@@ -647,6 +669,10 @@
       <span class="legend-item"><span class="swatch orange"></span>榮富國小濟州5天</span>
     </div>
 
+    <div class="quick-links">
+      <a href="https://www.taiwanmusic.org/" target="_blank" rel="noopener noreferrer">文化盃資訊 · 中華民國音樂教育學會</a>
+    </div>
+
     <section class="month-block">
       <h2 class="month-title">7 月</h2>
       <table class="calendar" aria-label="2026年7月行事曆">
@@ -898,6 +924,12 @@
 
   <script>
     const TIGERAIR_STATUS = "https://www.tigerairtw.com/zh-TW/flight-status";
+    const CULTURE_CUP_URL = "https://www.taiwanmusic.org/";
+
+    function formatNote(text) {
+      if (!text.includes("文化盃")) return text;
+      return text.replace(/文化盃/g, `<a href="${CULTURE_CUP_URL}" target="_blank" rel="noopener noreferrer">文化盃</a>`);
+    }
 
     const schedule = {
       "2026-07-01": { notes: ["何嘉仁整天"] },
@@ -1019,7 +1051,7 @@
           body += data.redNotes.map(n => `<div class="red">${n}</div>`).join("");
         }
         if (data.notes) {
-          body += data.notes.map(n => `<div class="note">${n}</div>`).join("");
+          body += data.notes.map(n => `<div class="note">${formatNote(n)}</div>`).join("");
         }
         if (data.flight) {
           const f = data.flight;
