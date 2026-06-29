@@ -352,6 +352,11 @@
       background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
     }
 
+    .info-card.cup {
+      border-left-color: #8b5cf6;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+    }
+
     .info-card .title { font-weight: 700; margin-bottom: 0.35rem; color: var(--text); }
     .info-card .meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.5rem; }
 
@@ -716,6 +721,23 @@
       </table>
     </section>
 
+    <section class="info-section" id="culture-cup">
+      <h2>文化盃比賽 · 2026/7/23（四）</h2>
+      <div class="info-card cup">
+        <div class="title">第 33 場 · 14-02 小號_國小中年級組 · 徐柏勛</div>
+        <div class="meta">14:30 開始 · 蘆洲功學社音樂廳</div>
+        <ul>
+          <li>地點：新北市蘆洲區中山二路162號2樓</li>
+          <li>當日請假：韓國濟州島加練</li>
+        </ul>
+        <div class="info-links">
+          <a href="https://www.taiwanmusic.org/2026TP.pdf" target="_blank" rel="noopener noreferrer">2026 賽程 PDF</a>
+          <a href="https://www.taiwanmusic.org/" target="_blank" rel="noopener noreferrer">文化盃官網</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%98%AD%E6%B4%B2%E5%8A%9F%E5%AD%B8%E7%A4%BE%E9%9F%B3%E6%A8%82%E5%BB%B3" target="_blank" rel="noopener noreferrer">地圖</a>
+        </div>
+      </div>
+    </section>
+
     <section class="info-section" id="trip-brochure">
       <h2>榮富國小｜2026/8/6–8/10 濟州島 5 天</h2>
       <div class="pdf-actions">
@@ -935,7 +957,7 @@
 
     <footer>
       榮富國小管樂團 · 濟州島 5 天行程
-      <span class="ver">頁面版本 2026/6/29 · 已移除團費顯示</span>
+      <span class="ver">頁面版本 2026/6/29 · 文化盃賽程已更新</span>
     </footer>
   </div>
 
@@ -977,7 +999,11 @@
       },
       "2026-07-21": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
       "2026-07-22": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
-      "2026-07-23": { bg: "cup", notes: ["文化盃比賽（小號-徐柏勛）請假"] },
+      "2026-07-23": {
+        bg: "cup",
+        redNotes: ["請假（濟州加練）"],
+        notes: ["文化盃比賽 14:30", "小號-徐柏勛·國小中年級組"]
+      },
       "2026-07-24": { notes: ["何嘉仁整天"] },
       "2026-07-26": { notes: ["青少管樂成發(新莊文化)"] },
       "2026-07-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
