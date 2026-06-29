@@ -357,6 +357,41 @@
       background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
     }
 
+    .info-card.blue {
+      border-left-color: #3b82f6;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    }
+
+    .concert-poster {
+      margin: 0 0 1rem;
+      text-align: center;
+    }
+
+    .concert-poster img {
+      display: block;
+      max-width: 100%;
+      width: min(420px, 100%);
+      margin: 0 auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid #bfdbfe;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .concert-poster figcaption {
+      margin-top: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .concert-program {
+      font-size: 0.84rem;
+      color: #475569;
+      margin: 0.35rem 0 0.5rem 1.1rem;
+      line-height: 1.55;
+    }
+
+    .concert-program li { margin-bottom: 0.2rem; }
+
     .cup-notice {
       margin: 0.85rem 0 0;
       text-align: center;
@@ -800,6 +835,54 @@
       </table>
     </section>
 
+    <section class="info-section" id="youth-concert">
+      <h2>新北市青少年管弦樂團 · 2026 年度巡迴音樂發表會</h2>
+      <figure class="concert-poster">
+        <img src="youth-orchestra-concert-2026.png" alt="2026 新北市青少年管弦樂團年度巡迴音樂發表會海報" loading="lazy" width="420" height="595">
+        <figcaption>榮富國小主辦 · 新北市青少年管弦樂團、榮富國小管樂團</figcaption>
+      </figure>
+
+      <div class="info-card blue">
+        <div class="title">7/19（日）14:00 · 高雄場</div>
+        <div class="meta">衛武營國家藝術文化中心 · 音樂廳</div>
+        <ol class="concert-program">
+          <li>W.A. Mozart：歌劇《費加洛婚禮》序曲 K.492</li>
+          <li>M. Bruch：小提琴、中提琴雙協奏曲 Op.88（鄭惠文、賴昱如）</li>
+          <li>Giuseppe Verdi：歌劇《命運之力》序曲</li>
+          <li>郭致遠：管弦樂組曲《追憶》</li>
+          <li>Albert Ketèlbey：〈波斯市場〉</li>
+          <li>Aaron Copland：〈牛仔競技〉之〈Hoedown〉</li>
+        </ol>
+        <div class="info-links">
+          <a href="https://www.opentix.life/" target="_blank" rel="noopener noreferrer">OPENTIX 購票</a>
+          <a href="https://www.npac-weiwuying.org/" target="_blank" rel="noopener noreferrer">衛武營官網</a>
+        </div>
+      </div>
+
+      <div class="info-card blue">
+        <div class="title">7/26（日）14:00 · 新北場</div>
+        <div class="meta">新北市新莊文化藝術中心 · 演藝廳</div>
+        <ol class="concert-program">
+          <li>W.A. Mozart：歌劇《費加洛婚禮》序曲 K.492</li>
+          <li>M. Bruch：小提琴、中提琴雙協奏曲 Op.88（鄭惠文、賴昱如）</li>
+          <li>Albert Ketèlbey：〈波斯市場〉</li>
+          <li>郭致遠：管弦樂組曲《追憶》</li>
+          <li>P. Tchaikovsky：〈胡桃鉗〉組曲 Op.71a</li>
+          <li>Aaron Copland：〈牛仔競技〉之〈Hoedown〉</li>
+        </ol>
+        <ul>
+          <li>憑票入場 · 索票請洽新莊榮富國小輔導室 (02)2276-9020 分機 831</li>
+        </ul>
+        <div class="info-links">
+          <a href="https://www.ntcartbox.com/" target="_blank" rel="noopener noreferrer">新莊文化藝術中心</a>
+        </div>
+      </div>
+
+      <p style="font-size:0.84rem;color:#64748b;margin:0.5rem 0 0;line-height:1.6;">
+        指揮：林秋麟（音樂總監暨指揮）、郭聯昌（客席指揮）、曾嫩 · 獨奏：鄭惠文（小提琴）、賴昱如（中提琴）
+      </p>
+    </section>
+
     <section class="info-section" id="culture-cup">
       <h2>文化盃比賽 · 2026/7/23（四）</h2>
       <div class="info-card cup">
@@ -1065,7 +1148,7 @@
 
     <footer>
       榮富國小管樂團 · 濟州島 5 天行程
-      <span class="ver">頁面版本 2026/6/29 · 文化盃賽程已更新</span>
+      <span class="ver">頁面版本 2026/6/29 · 青少管樂成發海報已更新</span>
     </footer>
   </div>
 
@@ -1075,7 +1158,13 @@
     const CULTURE_CUP_PDF_URL = "https://www.taiwanmusic.org/2026TP.pdf";
 
     const TEXT_LINKS = [
+      { text: "O'sulloc 雪綠茶博物館", href: "https://www.osulloc.com/" },
+      { text: "青少管樂成發(高雄)", href: "#youth-concert", internal: true },
+      { text: "青少管樂成發(新莊文化)", href: "#youth-concert", internal: true },
+      { text: "衛武營國家藝術文化中心音樂廳", href: "https://www.npac-weiwuying.org/" },
+      { text: "新莊文化藝術中心演藝廳", href: "https://www.ntcartbox.com/" },
       { text: "衛武營國家藝術文化中心", href: "https://www.npac-weiwuying.org/" },
+      { text: "新莊文化藝術中心", href: "https://www.ntcartbox.com/" },
       { text: "Innisfree 濟州小屋", href: "https://www.innisfree.com/kr/ko/discover-green-tea/from-jeju/island" },
       { text: "Ecoland 森林小火車", href: "https://www.ecolandjeju.co.kr/" },
       { text: "穿梭葛扎瓦原始林", href: "https://www.ecolandjeju.co.kr/" },
@@ -1135,7 +1224,7 @@
       "2026-07-15": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 16:40-18:00"] },
       "2026-07-16": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 16:40-18:00"] },
       "2026-07-17": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 16:40-18:00"] },
-      "2026-07-19": { notes: ["青少管樂成發(高雄)", "衛武營國家藝術文化中心"] },
+      "2026-07-19": { bg: "blue", notes: ["青少管樂成發(高雄) 14:00", "衛武營國家藝術文化中心音樂廳"] },
       "2026-07-20": {
         bg: "pink",
         redNotes: ["請假(高雄出發)"],
@@ -1149,7 +1238,7 @@
         notes: ["文化盃比賽 14:30", "小號·A-1 徐柏勛"]
       },
       "2026-07-24": { notes: ["何嘉仁整天"] },
-      "2026-07-26": { notes: ["青少管樂成發(新莊文化)"] },
+      "2026-07-26": { bg: "blue", notes: ["青少管樂成發(新莊文化) 14:00", "新莊文化藝術中心演藝廳"] },
       "2026-07-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
       "2026-07-28": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "安親班(校外教學-小人國)"] },
       "2026-07-29": { bg: "yellow", notes: ["個別課 07:40-08:20 (1堂課)", "A團管樂 13:30-16:00"] },
