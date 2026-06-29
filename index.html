@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>115 年暑假行事曆｜7–8 月</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --weekend: #fafafa;
+      --adjacent: #eceff1;
+      --accent: #c62828;
+      --border: #d1d5db;
+      --link: #1565c0;
+      --header-green: #e8f5e9;
+      --blue: #e3f2fd;
+      --pink: #fce4ec;
+      --yellow: #fffde7;
+      --green: #e8f5e9;
+      --orange: #fff3e0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .page { max-width: 1100px; margin: 0 auto; }
+
+    header { text-align: center; margin-bottom: 1.75rem; }
+    header h1 { font-size: 1.65rem; font-weight: 700; margin-bottom: 0.3rem; }
+    header p { color: var(--muted); font-size: 0.95rem; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.25rem;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+      font-size: 0.82rem;
+    }
+
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+
+    .swatch {
+      width: 1rem;
+      height: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+    }
+
+    .swatch.blue { background: var(--blue); }
+    .swatch.pink { background: var(--pink); }
+    .swatch.yellow { background: var(--yellow); }
+    .swatch.green { background: var(--green); }
+    .swatch.orange { background: var(--orange); }
+
+    .month-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      overflow-x: auto;
+    }
+
+    .month-title {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .calendar {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .calendar th {
+      padding: 0.45rem 0.2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      border-bottom: 2px solid var(--border);
+      background: var(--header-green);
+    }
+
+    .calendar td {
+      border: 1px solid var(--border);
+      vertical-align: top;
+      min-height: 5rem;
+      height: auto;
+      padding: 0.3rem 0.35rem;
+    }
+
+    .calendar td.adjacent { background: var(--adjacent); color: #9ca3af; }
+    .calendar td.weekend:not([class*="bg-"]) { background: var(--weekend); }
+    .calendar td.bg-blue { background: var(--blue); }
+    .calendar td.bg-pink { background: var(--pink); }
+    .calendar td.bg-yellow { background: var(--yellow); }
+    .calendar td.bg-green { background: var(--green); }
+    .calendar td.bg-orange { background: var(--orange); }
+
+    .cell-header { margin-bottom: 0.2rem; }
+    .cell-date { font-weight: 700; font-size: 0.9rem; }
+
+    .cell-body { font-size: 0.72rem; font-weight: 500; }
+    .cell-body div { margin-bottom: 0.15rem; }
+    .cell-body .red { color: var(--accent); }
+    .cell-body .note { color: #333; }
+    .cell-body .flight {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.68rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .cell-body a {
+      color: var(--link);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--link);
+    }
+
+    .cell-body a:hover { border-bottom-style: solid; }
+
+    .info-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .info-section h2 {
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-card {
+      border-left: 4px solid var(--link);
+      padding: 0.85rem 1rem;
+      background: #f8fafc;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 0.85rem;
+    }
+
+    .info-card:last-child { margin-bottom: 0; }
+    .info-card.orange { border-left-color: #ef6c00; }
+    .info-card .title { font-weight: 700; margin-bottom: 0.35rem; }
+    .info-card .meta { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .info-card ul {
+      font-size: 0.88rem;
+      margin: 0.35rem 0 0.5rem 1.1rem;
+    }
+
+    .info-card ul li { margin-bottom: 0.2rem; }
+
+    .info-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .info-links a { color: var(--link); text-decoration: none; }
+    .info-links a:hover { text-decoration: underline; }
+
+    .info-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+      padding: 0.5rem 0.75rem;
+      background: #fff8e1;
+      border-radius: 6px;
+      border: 1px solid #ffe082;
+    }
+
+    .trip-brochure {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .brochure-cover {
+      background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #43a047 100%);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1.25rem 1.75rem;
+    }
+
+    .brochure-cover .org { font-size: 1.35rem; font-weight: 700; letter-spacing: 0.08em; }
+    .brochure-cover .event {
+      font-size: 1.05rem;
+      margin: 0.65rem 0 0.35rem;
+      font-weight: 500;
+    }
+
+    .brochure-cover .dates {
+      font-size: 0.95rem;
+      opacity: 0.92;
+    }
+
+    .brochure-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+    .brochure-price {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0.85rem;
+      margin-bottom: 1.25rem;
+      background: #f1f8e9;
+      border-radius: 8px;
+      border: 1px solid #c5e1a5;
+    }
+
+    .brochure-block { margin-bottom: 1.35rem; }
+
+    .brochure-block h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid #2e7d32;
+      color: #1b5e20;
+    }
+
+    .brochure-block p,
+    .brochure-block li {
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .brochure-block ul {
+      margin: 0.35rem 0 0 1.15rem;
+    }
+
+    .brochure-block li { margin-bottom: 0.25rem; }
+
+    .flight-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .flight-table th,
+    .flight-table td {
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.6rem;
+      text-align: left;
+    }
+
+    .flight-table th {
+      background: #e8f5e9;
+      font-weight: 600;
+    }
+
+    .flight-table .ref { color: var(--muted); }
+    .flight-table .actual { background: #fff8e1; font-weight: 600; }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+
+    .highlight-card {
+      background: #f1f8e9;
+      border: 1px solid #c5e1a5;
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .section-divider {
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #1b5e20;
+      margin: 1.5rem 0 1rem;
+      letter-spacing: 0.15em;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: "—";
+      margin: 0 0.5rem;
+      color: #81c784;
+    }
+
+    .day-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.85rem;
+      overflow: hidden;
+    }
+
+    .day-card-header {
+      background: #e8f5e9;
+      padding: 0.55rem 0.85rem;
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: #1b5e20;
+      border-bottom: 1px solid #c8e6c9;
+    }
+
+    .day-card-body {
+      padding: 0.75rem 0.85rem;
+      font-size: 0.86rem;
+    }
+
+    .day-card-body .route {
+      margin-bottom: 0.5rem;
+      line-height: 1.55;
+    }
+
+    .day-card-body .group {
+      margin: 0.45rem 0;
+      padding-left: 0.5rem;
+      border-left: 3px solid #66bb6a;
+    }
+
+    .day-card-body .group strong { color: #2e7d32; }
+
+    .meal-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1rem;
+      margin-top: 0.55rem;
+      padding-top: 0.55rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .meal-row span strong { color: var(--text); }
+
+    .pdf-actions { margin-bottom: 1rem; }
+
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1rem;
+      background: var(--link);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .pdf-btn:hover { background: #0d47a1; }
+
+    @media (max-width: 640px) {
+      header h1 { font-size: 1.3rem; }
+      .cell-body { font-size: 0.65rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>115 年暑假行事曆</h1>
+      <p>2026 年 7–8 月</p>
+    </header>
+
+    <div class="legend">
+      <span class="legend-item"><span class="swatch blue"></span>青少管樂</span>
+      <span class="legend-item"><span class="swatch pink"></span>濟州加練</span>
+      <span class="legend-item"><span class="swatch yellow"></span>A/B 團管樂</span>
+      <span class="legend-item"><span class="swatch green"></span>濟州集訓</span>
+      <span class="legend-item"><span class="swatch orange"></span>榮富國小濟州5天</span>
+    </div>
+
+    <section class="month-block">
+      <h2 class="month-title">7 月</h2>
+      <table class="calendar" aria-label="2026年7月行事曆">
+        <thead>
+          <tr>
+            <th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th>
+          </tr>
+        </thead>
+        <tbody id="july-body"></tbody>
+      </table>
+    </section>
+
+    <section class="month-block">
+      <h2 class="month-title">8 月</h2>
+      <table class="calendar" aria-label="2026年8月行事曆">
+        <thead>
+          <tr>
+            <th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th>
+          </tr>
+        </thead>
+        <tbody id="august-body"></tbody>
+      </table>
+    </section>
+
+    <section class="info-section" id="trip-brochure">
+      <h2>榮富國小｜2026/8/6–8/10 濟州島 5 天</h2>
+      <div class="pdf-actions">
+        <a class="pdf-btn" href="rongfu-jeju-20260806-0810.pdf" target="_blank" rel="noopener noreferrer">開啟完整行程 PDF</a>
+      </div>
+      <div class="trip-brochure">
+        <div class="brochure-cover">
+          <div class="org">榮富國小管樂團</div>
+          <div class="event">2026 濟州國際管樂節（JIWEF）參訪團</div>
+          <div class="dates">2026/8/6（四）– 8/10（一）· 濟州島 5 天</div>
+        </div>
+
+        <div class="brochure-body">
+          <div class="brochure-price">團費　每人每位　新臺幣 35,000 元</div>
+
+          <div class="brochure-block">
+            <h3>費用包含</h3>
+            <p>機票、行程表列住宿、行程表列景點門票＋餐費（行程上註明之餐點）、遊覽巴士、500 萬旅遊責任險及 20 萬意外醫療險、全程領隊導遊司機服務費、領隊分攤、行政雜支＋稅金。</p>
+          </div>
+
+          <div class="brochure-block">
+            <h3>費用不含</h3>
+            <p>床頭與行李等禮貌性質小費、行李超重費、私人費用等。</p>
+          </div>
+
+          <div class="brochure-block">
+            <h3>航班資訊</h3>
+            <table class="flight-table">
+              <thead>
+                <tr>
+                  <th>區分</th>
+                  <th>日期</th>
+                  <th>航班</th>
+                  <th>起飛</th>
+                  <th>抵達</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ref">
+                  <td>參考（德威）</td>
+                  <td>8/6 去程</td>
+                  <td>TW688</td>
+                  <td>桃園 14:25</td>
+                  <td>濟州 17:25</td>
+                </tr>
+                <tr class="ref">
+                  <td>參考（德威）</td>
+                  <td>8/10 回程</td>
+                  <td>TW687</td>
+                  <td>濟州 12:05</td>
+                  <td>桃園 13:25</td>
+                </tr>
+                <tr class="actual">
+                  <td>確認（虎航）</td>
+                  <td>8/6 去程</td>
+                  <td>IT654</td>
+                  <td>桃園 06:40</td>
+                  <td>濟州 09:45</td>
+                </tr>
+                <tr class="actual">
+                  <td>確認（虎航）</td>
+                  <td>8/10 回程</td>
+                  <td>IT655</td>
+                  <td>濟州 10:20</td>
+                  <td>桃園 11:35</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="info-note" style="margin-top:0.75rem;margin-bottom:0;">實際搭乘以<strong>台灣虎航 IT654／IT655</strong>為準。</p>
+          </div>
+
+          <div class="brochure-block">
+            <h3>規劃亮點</h3>
+            <div class="highlights-grid">
+              <div class="highlight-card">國際展演<br>與藝術實踐</div>
+              <div class="highlight-card">傳統市場<br>與生活美學</div>
+              <div class="highlight-card">世界自然遺產<br>與生態學習</div>
+              <div class="highlight-card">依專業屬性<br>分組分工</div>
+              <div class="highlight-card">在地人文<br>音樂交流</div>
+              <div class="highlight-card">地質科學<br>團隊協作</div>
+            </div>
+          </div>
+
+          <div class="section-divider">行程規劃</div>
+
+          <article class="day-card">
+            <div class="day-card-header">D1 · 8/6（四）</div>
+            <div class="day-card-body">
+              <div class="route">學校 → 桃園機場 → 濟州機場 → 享用晚餐<br>～特別加贈韓式炸雞（每房半隻雞）～</div>
+              <div class="meal-row">
+                <span><strong>早</strong> −</span>
+                <span><strong>午</strong> 營養餐盒</span>
+                <span><strong>晚</strong> 馬鈴薯排骨風味</span>
+                <span><strong>住</strong> 濟州島市區飯店</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="day-card">
+            <div class="day-card-header">D2 · 8/7（五）</div>
+            <div class="day-card-body">
+              <div class="group"><strong>演出組：</strong>濟州國際管樂節展演與交流 → 正式演出（暫定）</div>
+              <div class="group"><strong>觀光組：</strong>西歸浦每日偶來市場、正房瀑布、樂天超市 → 返回演出場地集合，觀賞表演並助力</div>
+              <div class="meal-row">
+                <span><strong>早</strong> 飯店內用</span>
+                <span><strong>午</strong> 演出組餐盒／輕食；觀光組韓式定食</span>
+                <span><strong>晚</strong> 黑豬肉燒烤</span>
+                <span><strong>住</strong> 濟州島市區飯店（續住）</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="day-card">
+            <div class="day-card-header">D3 · 8/8（六）</div>
+            <div class="day-card-body">
+              <div class="route">飯店 → 城山日出峰（UNESCO 世界自然遺產）、涉地可支 → 穿梭葛扎瓦原始林～Ecoland 森林小火車 → 濟州海苔博物館＋韓服拍照體驗 → 漢挐樹木園夜市體驗</div>
+              <div class="meal-row">
+                <span><strong>早</strong> 飯店內用</span>
+                <span><strong>午</strong> 海鮮鍋</span>
+                <span><strong>晚</strong> 代金韓圜 14,000 元</span>
+                <span><strong>住</strong> 濟州島市區飯店（續住）</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="day-card">
+            <div class="day-card-header">D4 · 8/9（日）</div>
+            <div class="day-card-body">
+              <div class="route">飯店 → 茶道建築之美～O'sulloc 雪綠茶博物館＋Innisfree 濟州小屋 → 濟州最大樂園～神話世界 或 史努比樂園（二擇一） → 國寶級無語言劇～亂打秀（NANTA）</div>
+              <div class="meal-row">
+                <span><strong>早</strong> 飯店內用</span>
+                <span><strong>午</strong> 韓式人蔘雞風味</span>
+                <span><strong>晚</strong> 韓國部隊鍋風味</span>
+                <span><strong>住</strong> 濟州島市區飯店（續住）</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="day-card">
+            <div class="day-card-header">D5 · 8/10（一）</div>
+            <div class="day-card-body">
+              <div class="route">飯店 → 濟州機場 → 桃園機場 → 快樂賦歸～學校</div>
+              <div class="meal-row">
+                <span><strong>早</strong> 飯店內用</span>
+                <span><strong>午</strong> 機上餐點</span>
+                <span><strong>晚</strong> −</span>
+                <span><strong>住</strong> 溫暖的家</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>班機資訊 · 台灣虎航（確認航班）</h2>
+      <div class="info-card">
+        <div class="title">8/6（四）去程 · IT654 · 桃園 TPE → 濟州 CJU</div>
+        <div class="meta">06:40 – 09:45（虎航提供）</div>
+        <div class="info-links">
+          <a href="https://www.tigerairtw.com/zh-TW/flight-status" target="_blank" rel="noopener noreferrer">台灣虎航 班機動態查詢</a>
+          <a href="https://www.flightradar24.com/data/flights/it654" target="_blank" rel="noopener noreferrer">Flightradar24 · IT654</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="title">8/10（一）回程 · IT655 · 濟州 CJU → 桃園 TPE</div>
+        <div class="meta">10:20 – 11:35（虎航提供）</div>
+        <div class="info-links">
+          <a href="https://www.tigerairtw.com/zh-TW/flight-status" target="_blank" rel="noopener noreferrer">台灣虎航 班機動態查詢</a>
+          <a href="https://www.flightradar24.com/data/flights/it655" target="_blank" rel="noopener noreferrer">Flightradar24 · IT655</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <h2>機場接送 · 和運租車（中國信託貴賓預約）</h2>
+      <div class="info-card orange">
+        <div class="title">8/6（四）去程接送 · 03:30 出發</div>
+        <ul>
+          <li>廂型車 · 新北市新莊區中港路531巷92號 → 桃園機場</li>
+          <li>搭乘 IT654 · 06:40 起飛</li>
+          <li>乘車：大人 2 位、孩童 2 位 · 行李：大 2、中 1、小 1</li>
+        </ul>
+        <div class="info-links">
+          <a href="https://p.irentcar.com.tw/verify/4B6757" target="_blank" rel="noopener noreferrer">查詢訂單及駕駛資訊</a>
+          <span>驗證碼 <strong>1064</strong></span>
+        </div>
+      </div>
+      <div class="info-card orange">
+        <div class="title">8/10（一）回程接送 · 11:55 出發</div>
+        <ul>
+          <li>廂型車（升等 +$350）· 桃園機場 → 新北市新莊區中港路531巷92號</li>
+          <li>IT655 · 11:35 抵達後依指定時間出發</li>
+          <li>乘車：大人 2 位、孩童 2 位 · 行李：大 2、中 1、小 1</li>
+        </ul>
+        <div class="info-links">
+          <a href="https://p.irentcar.com.tw/verify/4B68W5" target="_blank" rel="noopener noreferrer">查詢訂單及駕駛資訊</a>
+          <span>驗證碼 <strong>1552</strong></span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const TIGERAIR_STATUS = "https://www.tigerairtw.com/zh-TW/flight-status";
+
+    const schedule = {
+      "2026-07-01": { notes: ["何嘉仁整天"] },
+      "2026-07-02": { notes: ["何嘉仁整天"] },
+      "2026-07-03": { notes: ["何嘉仁整天"] },
+      "2026-07-06": { notes: ["何嘉仁整天"] },
+      "2026-07-07": { notes: ["何嘉仁整天"] },
+      "2026-07-08": { notes: ["何嘉仁整天"] },
+      "2026-07-09": { notes: ["何嘉仁整天"] },
+      "2026-07-10": { notes: ["何嘉仁整天"] },
+      "2026-07-13": { bg: "blue", notes: ["青少管樂 13:30-16:30"] },
+      "2026-07-14": { bg: "blue", notes: ["青少管樂 13:30-16:30", "安親班(校外教學-小熊博物館)"] },
+      "2026-07-15": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 16:40-18:00"] },
+      "2026-07-16": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 16:40-18:00"] },
+      "2026-07-17": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 16:40-18:00"] },
+      "2026-07-19": { notes: ["青少管樂成發(高雄)"] },
+      "2026-07-20": {
+        bg: "pink",
+        redNotes: ["請假(高雄出發)"],
+        notes: ["韓國濟州島加練 13:30-16:00"]
+      },
+      "2026-07-21": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
+      "2026-07-22": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
+      "2026-07-23": { bg: "pink", notes: ["文化盃比賽（小號）請假"] },
+      "2026-07-24": { notes: ["何嘉仁整天"] },
+      "2026-07-26": { notes: ["青少管樂成發(新莊文化)"] },
+      "2026-07-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
+      "2026-07-28": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "安親班(校外教學-小人國)"] },
+      "2026-07-29": { bg: "yellow", notes: ["個別課 07:40-08:20 (1堂課)", "A團管樂 13:30-16:00"] },
+      "2026-07-30": { bg: "yellow", notes: ["個別課 07:40-08:20 (1堂課)", "A團管樂 13:30-16:00 (管樂評鑑)"] },
+      "2026-07-31": { bg: "green", notes: ["韓國濟州島集訓 13:30-16:00"] },
+
+      "2026-08-02": { bg: "green", notes: ["韓國濟州島集訓 13:30-16:00"] },
+      "2026-08-03": { bg: "green", notes: ["韓國濟州島集訓 13:30-16:00"] },
+      "2026-08-04": { notes: ["安親班(校外教學-花田探險)"] },
+      "2026-08-05": { notes: ["何嘉仁整天"] },
+      "2026-08-06": {
+        bg: "orange",
+        notes: ["榮富國小濟州5天 D1(出國請假)", "和運接送 03:30 出發"],
+        flight: { code: "IT654", route: "TPE → CJU", time: "06:40~09:45", link: "https://www.flightradar24.com/data/flights/it654" }
+      },
+      "2026-08-07": { bg: "orange", notes: ["榮富國小濟州5天 D2", "濟州國際管樂節展演"] },
+      "2026-08-08": { bg: "orange", notes: ["榮富國小濟州5天 D3", "城山日出峰等"] },
+      "2026-08-09": { bg: "orange", notes: ["榮富國小濟州5天 D4", "神話世界/史努比"] },
+      "2026-08-10": {
+        bg: "orange",
+        notes: ["榮富國小濟州5天 D5(出國請假)", "和運接送 11:55 出發"],
+        flight: { code: "IT655", route: "CJU → TPE", time: "10:20~11:35", link: "https://www.flightradar24.com/data/flights/it655" }
+      },
+      "2026-08-11": { notes: ["何嘉仁整天"] },
+      "2026-08-12": { notes: ["何嘉仁整天"] },
+      "2026-08-13": { notes: ["何嘉仁整天"] },
+      "2026-08-14": { notes: ["何嘉仁整天"] },
+      "2026-08-17": { notes: ["何嘉仁整天"] },
+      "2026-08-18": { notes: ["安親班(校外教學-陽明山花園教室)"] },
+      "2026-08-19": { notes: ["何嘉仁整天"] },
+      "2026-08-20": { notes: ["何嘉仁整天"] },
+      "2026-08-21": { notes: ["何嘉仁整天"] },
+      "2026-08-24": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
+      "2026-08-25": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00"] },
+      "2026-08-26": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00"] },
+      "2026-08-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "B團管樂 13:30-16:00"] },
+      "2026-08-28": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "B團管樂 13:30-16:00"] }
+    };
+
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function dateKey(y, m, d) { return `${y}-${pad(m)}-${pad(d)}`; }
+
+    function renderMonth(year, month, tbodyId) {
+      const tbody = document.getElementById(tbodyId);
+      const first = new Date(year, month - 1, 1);
+      const startOffset = first.getDay();
+      const daysInMonth = new Date(year, month, 0).getDate();
+
+      let day = 1;
+      let cellIndex = 0;
+      let html = "<tr>";
+
+      for (let i = 0; i < startOffset; i++) {
+        const prevMonth = month === 1 ? 12 : month - 1;
+        const prevYear = month === 1 ? year - 1 : year;
+        const prevDays = new Date(prevYear, prevMonth, 0).getDate();
+        const prevDay = prevDays - startOffset + i + 1;
+        html += renderCell(prevDay, dateKey(prevYear, prevMonth, prevDay), true, cellIndex % 7);
+        cellIndex++;
+      }
+
+      while (day <= daysInMonth) {
+        if (cellIndex % 7 === 0 && day !== 1) html += "</tr><tr>";
+        html += renderCell(day, dateKey(year, month, day), false, cellIndex % 7);
+        day++;
+        cellIndex++;
+      }
+
+      const remaining = 7 - (cellIndex % 7);
+      if (remaining < 7) {
+        const nextMonth = month === 12 ? 1 : month + 1;
+        const nextYear = month === 12 ? year + 1 : year;
+        for (let i = 1; i <= remaining; i++) {
+          html += renderCell(i, dateKey(nextYear, nextMonth, i), true, (cellIndex + i - 1) % 7);
+        }
+      }
+
+      html += "</tr>";
+      tbody.innerHTML = html;
+    }
+
+    function renderCell(dayNum, key, isAdjacent, dayOfWeek) {
+      const data = schedule[key] || {};
+      const classes = [];
+
+      if (isAdjacent) classes.push("adjacent");
+      else if (data.bg) classes.push(`bg-${data.bg}`);
+      else if (dayOfWeek === 0 || dayOfWeek === 6) classes.push("weekend");
+
+      let body = "";
+      if (!isAdjacent) {
+        if (data.redNotes) {
+          body += data.redNotes.map(n => `<div class="red">${n}</div>`).join("");
+        }
+        if (data.notes) {
+          body += data.notes.map(n => `<div class="note">${n}</div>`).join("");
+        }
+        if (data.flight) {
+          const f = data.flight;
+          body += `<span class="flight">
+            <a href="${f.link}" target="_blank" rel="noopener noreferrer" title="班機動態">${f.code}</a>
+            (${f.route}) ${f.time}
+            · <a href="${TIGERAIR_STATUS}" target="_blank" rel="noopener noreferrer">虎航動態</a>
+          </span>`;
+        }
+      }
+
+      return `<td class="${classes.join(" ")}">
+        <div class="cell-header"><span class="cell-date">${dayNum}</span></div>
+        <div class="cell-body">${body}</div>
+      </td>`;
+    }
+
+    renderMonth(2026, 7, "july-body");
+    renderMonth(2026, 8, "august-body");
+  </script>
+</body>
+</html>
