@@ -29,12 +29,13 @@ git push -u origin main
 
 ## 3. 啟用 GitHub Pages
 
-1. Repo → **Settings** → **Pages**
-2. **Build and deployment** → **Source** 選 **GitHub Actions**
-3. 推送後 Actions 會自動部署（約 1～2 分鐘）
-4. 網址：`https://amdocsmail.github.io/jeju-schedule/`
+1. 開啟：https://github.com/amdocsmail/jeju-schedule/settings/pages
+2. **Build and deployment** → **Source** 選 **Deploy from a branch**
+3. **Branch**：`main`　**Folder**：`/ (root)`
+4. 按 **Save**
+5. 等 1～2 分鐘，頁面會顯示綠色網址
 
-（也可改用 **Deploy from a branch** → `main` / `/ (root)`，效果相同。）
+> 若曾用 GitHub Actions 部署失敗（紅色 X），請改用上述 **Deploy from a branch** 方式即可。
 
 ## 4. 之後更新網站
 
