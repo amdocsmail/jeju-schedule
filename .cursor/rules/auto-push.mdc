@@ -1,0 +1,14 @@
+---
+description: Auto-commit and push schedule updates to GitHub Pages after changes
+alwaysApply: true
+---
+
+# Auto Push
+
+After any schedule or site change in this project, automatically commit and push to `main` without waiting for the user to ask.
+
+- Commit with a concise message describing what changed
+- Push to `origin/main` (deploys GitHub Pages)
+- Briefly confirm the commit hash and site URL in the reply
+
+Do not push secrets or credential files.
