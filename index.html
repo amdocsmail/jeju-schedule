@@ -44,6 +44,8 @@
       --cup-border: #c4b5fd;
       --rose: #ffe4e6;
       --rose-border: #fda4af;
+      --cambridge: #e0f2fe;
+      --cambridge-border: #7dd3fc;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -181,6 +183,7 @@
     .swatch.orange { background: #f97316; }
     .swatch.cup { background: #8b5cf6; }
     .swatch.rose { background: #f43f5e; }
+    .swatch.cambridge { background: #0ea5e9; }
 
     .month-block {
       background: var(--card);
@@ -260,6 +263,7 @@
     .calendar td.bg-orange { background: var(--orange); border-color: var(--orange-border); }
     .calendar td.bg-cup { background: var(--cup); border-color: var(--cup-border); }
     .calendar td.bg-rose { background: var(--rose); border-color: var(--rose-border); }
+    .calendar td.bg-cambridge { background: var(--cambridge); border-color: var(--cambridge-border); }
 
     .cell-header { margin-bottom: 0.25rem; }
 
@@ -279,6 +283,7 @@
     .calendar td.bg-orange .cell-date,
     .calendar td.bg-cup .cell-date,
     .calendar td.bg-rose .cell-date,
+    .calendar td.bg-cambridge .cell-date,
     .calendar td.bg-blue .cell-date,
     .calendar td.bg-pink .cell-date,
     .calendar td.bg-yellow .cell-date,
@@ -843,6 +848,7 @@
       <span class="legend-item"><span class="swatch green"></span>濟州集訓</span>
       <span class="legend-item"><span class="swatch orange"></span>榮富國小濟州5天</span>
       <span class="legend-item"><span class="swatch rose"></span>家庭行程</span>
+      <span class="legend-item"><span class="swatch cambridge"></span>劍橋證照班</span>
     </div>
 
     <div class="quick-links">
@@ -1253,7 +1259,7 @@
 
     <footer>
       榮富國小管樂團 · 濟州島 5 天行程
-      <span class="ver">頁面版本 2026/6/29 · 7月家庭行程已更新</span>
+      <span class="ver">頁面版本 2026/6/29 · 8月劍橋證照班已更新</span>
     </footer>
   </div>
 
@@ -1398,6 +1404,7 @@
       "2026-07-30": { bg: "yellow", notes: ["個別課 07:40-08:20 (1堂課)", "A團管樂 13:30-16:00 (管樂評鑑)"] },
       "2026-07-31": { bg: "green", notes: ["韓國濟州島集訓 13:30-16:00"] },
 
+      "2026-08-01": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00"] },
       "2026-08-02": { bg: "green", notes: ["韓國濟州島集訓 13:30-16:00"] },
       "2026-08-03": { bg: "green", notes: ["韓國濟州島集訓 13:30-16:00"] },
       "2026-08-04": { notes: ["安親班(校外教學-花田探險)"] },
@@ -1408,7 +1415,11 @@
         flight: { code: "IT654", route: "TPE → CJU", time: "06:40~09:45", link: "https://www.flightradar24.com/data/flights/it654" }
       },
       "2026-08-07": { bg: "orange", notes: ["榮富國小濟州5天 D2", "濟州國際管樂節展演"] },
-      "2026-08-08": { bg: "orange", notes: ["榮富國小濟州5天 D3", "城山日出峰等"] },
+      "2026-08-08": {
+        bg: "orange",
+        redNotes: ["劍橋班請假(濟州)"],
+        notes: ["榮富國小濟州5天 D3", "城山日出峰等"]
+      },
       "2026-08-09": { bg: "orange", notes: ["榮富國小濟州5天 D4", "神話世界/史努比"] },
       "2026-08-10": {
         bg: "orange",
@@ -1419,16 +1430,19 @@
       "2026-08-12": { notes: ["何嘉仁整天"] },
       "2026-08-13": { notes: ["何嘉仁整天"] },
       "2026-08-14": { notes: ["何嘉仁整天"] },
+      "2026-08-15": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00"] },
       "2026-08-17": { notes: ["何嘉仁整天"] },
       "2026-08-18": { notes: ["安親班(校外教學-陽明山花園教室)"] },
       "2026-08-19": { notes: ["何嘉仁整天"] },
       "2026-08-20": { notes: ["何嘉仁整天"] },
       "2026-08-21": { notes: ["何嘉仁整天"] },
+      "2026-08-22": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00"] },
       "2026-08-24": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
       "2026-08-25": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00"] },
       "2026-08-26": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00"] },
       "2026-08-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "B團管樂 13:30-16:00"] },
-      "2026-08-28": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "B團管樂 13:30-16:00"] }
+      "2026-08-28": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "B團管樂 13:30-16:00"] },
+      "2026-08-29": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00"] }
     };
 
     function pad(n) { return String(n).padStart(2, "0"); }
