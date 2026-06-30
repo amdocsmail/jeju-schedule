@@ -52,6 +52,8 @@
       --school-border: #d97706;
       --school-open: #fecaca;
       --school-open-border: #dc2626;
+      --swim: #cffafe;
+      --swim-border: #22d3ee;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -193,6 +195,7 @@
     .swatch.esl { background: #6366f1; }
     .swatch.school { background: #d97706; }
     .swatch.school-open { background: #dc2626; }
+    .swatch.swim { background: #06b6d4; }
 
     .month-block {
       background: var(--card);
@@ -276,6 +279,7 @@
     .calendar td.bg-esl { background: var(--esl); border-color: var(--esl-border); }
     .calendar td.bg-school { background: var(--school); border-color: var(--school-border); }
     .calendar td.bg-school-open { background: var(--school-open); border-color: var(--school-open-border); }
+    .calendar td.bg-swim { background: var(--swim); border-color: var(--swim-border); }
 
     .cell-header { margin-bottom: 0.25rem; }
 
@@ -299,6 +303,7 @@
     .calendar td.bg-esl .cell-date,
     .calendar td.bg-school .cell-date,
     .calendar td.bg-school-open .cell-date,
+    .calendar td.bg-swim .cell-date,
     .calendar td.bg-blue .cell-date,
     .calendar td.bg-pink .cell-date,
     .calendar td.bg-yellow .cell-date,
@@ -867,6 +872,7 @@
       <span class="legend-item"><span class="swatch esl"></span>ESL 菁英班文法課</span>
       <span class="legend-item"><span class="swatch school"></span>返校日</span>
       <span class="legend-item"><span class="swatch school-open"></span>開學日</span>
+      <span class="legend-item"><span class="swatch swim"></span>榮富暑期游泳課</span>
     </div>
 
     <div class="quick-links">
@@ -1456,16 +1462,16 @@
       "2026-08-13": { notes: ["何嘉仁整天"] },
       "2026-08-14": { notes: ["何嘉仁整天"] },
       "2026-08-15": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00"] },
-      "2026-08-17": { notes: ["何嘉仁整天"] },
-      "2026-08-18": { notes: ["安親班(校外教學-陽明山花園教室)"] },
-      "2026-08-19": { notes: ["何嘉仁整天"] },
-      "2026-08-20": { notes: ["何嘉仁整天"] },
-      "2026-08-21": { notes: ["何嘉仁整天"] },
-      "2026-08-22": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00"] },
-      "2026-08-24": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
-      "2026-08-25": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00"] },
-      "2026-08-26": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00"] },
-      "2026-08-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "B團管樂 13:30-16:00"] },
+      "2026-08-17": { bg: "swim", notes: ["何嘉仁整天", "暑期游泳課 19:25-20:45"] },
+      "2026-08-18": { bg: "swim", notes: ["安親班(校外教學-陽明山花園教室)", "暑期游泳課 19:25-20:45"] },
+      "2026-08-19": { bg: "swim", notes: ["何嘉仁整天", "暑期游泳課 19:25-20:45"] },
+      "2026-08-20": { bg: "swim", notes: ["何嘉仁整天", "暑期游泳課 19:25-20:45"] },
+      "2026-08-21": { bg: "swim", notes: ["何嘉仁整天", "暑期游泳課 19:25-20:45"] },
+      "2026-08-22": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00", "暑期游泳課 19:25-20:45"] },
+      "2026-08-24": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "暑期游泳課 19:25-20:45"] },
+      "2026-08-25": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00", "暑期游泳課 19:25-20:45"] },
+      "2026-08-26": { bg: "yellow", notes: ["個別課 07:40-09:00 (2堂課)", "A團管樂 13:30-16:00", "暑期游泳課 19:25-20:45"] },
+      "2026-08-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "B團管樂 13:30-16:00", "暑期游泳課 19:25-20:45"] },
       "2026-08-28": { bg: "school", notes: ["返校日", "A團管樂 13:30-16:00", "B團管樂 13:30-16:00"] },
       "2026-08-29": { bg: "cambridge", notes: ["劍橋證照班 09:30-12:00"] },
       "2026-08-31": { bg: "school-open", notes: ["開學日"] }
