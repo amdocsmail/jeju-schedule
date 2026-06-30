@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>115 年暑假行事曆｜6–8 月</title>
+  <title>115 年暑假行事曆｜7–8 月</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
@@ -850,7 +850,7 @@
       <div class="hero-inner">
         <div class="hero-badge">Summer 2026</div>
         <h1>115 年暑假行事曆</h1>
-        <p>2026 年 6 – 8 月</p>
+        <p>2026 年 7 – 8 月</p>
         <p class="hero-sub">管樂練習 · 濟州國際管樂節參訪團</p>
       </div>
     </header>
@@ -876,18 +876,6 @@
       <a href="https://www.taiwanmusic.org/culture/schedule/" target="_blank" rel="noopener noreferrer">文化盃賽程查詢 · 台北／小號／國小中年級組</a>
       <a href="#youth-concert">青少管樂成發 · 7/19 高雄、7/26 新莊</a>
     </div>
-
-    <section class="month-block">
-      <h2 class="month-title">6 月</h2>
-      <table class="calendar" aria-label="2026年6月行事曆">
-        <thead>
-          <tr>
-            <th>日</th><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th>
-          </tr>
-        </thead>
-        <tbody id="june-body"></tbody>
-      </table>
-    </section>
 
     <section class="month-block">
       <h2 class="month-title">7 月</h2>
@@ -1527,14 +1515,16 @@
 
     function renderCell(dayNum, key, isAdjacent, dayOfWeek) {
       const data = schedule[key] || {};
+      const hasEvent = Boolean(data.bg || data.notes || data.redNotes || data.flight);
       const classes = [];
+      const mutedAdjacent = isAdjacent && !hasEvent;
 
-      if (isAdjacent) classes.push("adjacent");
+      if (mutedAdjacent) classes.push("adjacent");
       else if (data.bg) classes.push(`bg-${data.bg}`);
       else if (dayOfWeek === 0 || dayOfWeek === 6) classes.push("weekend");
 
       let body = "";
-      if (!isAdjacent) {
+      if (!mutedAdjacent) {
         if (data.redNotes) {
           body += data.redNotes.map(n => `<div class="red">${n}</div>`).join("");
         }
@@ -1557,7 +1547,6 @@
       </td>`;
     }
 
-    renderMonth(2026, 6, "june-body");
     renderMonth(2026, 7, "july-body");
     renderMonth(2026, 8, "august-body");
 
