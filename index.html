@@ -1492,11 +1492,15 @@
       let html = "<tr>";
 
       for (let i = 0; i < startOffset; i++) {
-        const prevMonth = month === 1 ? 12 : month - 1;
-        const prevYear = month === 1 ? year - 1 : year;
-        const prevDays = new Date(prevYear, prevMonth, 0).getDate();
-        const prevDay = prevDays - startOffset + i + 1;
-        html += renderCell(prevDay, dateKey(prevYear, prevMonth, prevDay), true, cellIndex % 7, hidePrevAdjacentSchedule);
+        if (hidePrevAdjacentSchedule) {
+          html += renderEmptyAdjacentCell(cellIndex % 7);
+        } else {
+          const prevMonth = month === 1 ? 12 : month - 1;
+          const prevYear = month === 1 ? year - 1 : year;
+          const prevDays = new Date(prevYear, prevMonth, 0).getDate();
+          const prevDay = prevDays - startOffset + i + 1;
+          html += renderCell(prevDay, dateKey(prevYear, prevMonth, prevDay), true, cellIndex % 7);
+        }
         cellIndex++;
       }
 
@@ -1508,11 +1512,11 @@
       }
 
       const remaining = 7 - (cellIndex % 7);
-      if (remaining < 7) {
+      if (remaining < 7 && !hideNextAdjacentSchedule) {
         const nextMonth = month === 12 ? 1 : month + 1;
         const nextYear = month === 12 ? year + 1 : year;
         for (let i = 1; i <= remaining; i++) {
-          html += renderCell(i, dateKey(nextYear, nextMonth, i), true, (cellIndex + i - 1) % 7, hideNextAdjacentSchedule);
+          html += renderCell(i, dateKey(nextYear, nextMonth, i), true, (cellIndex + i - 1) % 7);
         }
       }
 
@@ -1520,11 +1524,17 @@
       tbody.innerHTML = html;
     }
 
-    function renderCell(dayNum, key, isAdjacent, dayOfWeek, forceMuteAdjacent = false) {
+    function renderEmptyAdjacentCell(dayOfWeek) {
+      const classes = ["adjacent"];
+      if (dayOfWeek === 0 || dayOfWeek === 6) classes.push("weekend");
+      return `<td class="${classes.join(" ")}"><div class="cell-header"><span class="cell-date"></span></div><div class="cell-body"></div></td>`;
+    }
+
+    function renderCell(dayNum, key, isAdjacent, dayOfWeek) {
       const data = schedule[key] || {};
       const hasEvent = Boolean(data.bg || data.notes || data.redNotes || data.flight);
       const classes = [];
-      const mutedAdjacent = isAdjacent && (forceMuteAdjacent || !hasEvent);
+      const mutedAdjacent = isAdjacent && !hasEvent;
 
       if (mutedAdjacent) classes.push("adjacent");
       else if (data.bg) classes.push(`bg-${data.bg}`);
