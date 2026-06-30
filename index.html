@@ -1391,7 +1391,7 @@
       },
       "2026-07-11": { bg: "cambridge", notes: ["劍橋證照班試讀 13:30-16:00"] },
       "2026-07-13": { bg: "blue", notes: ["青少管樂 13:30-16:30"] },
-      "2026-07-14": { bg: "blue", notes: ["青少管樂 13:30-16:30", "安親班(校外教學-小熊博物館)"] },
+      "2026-07-14": { bg: "blue", notes: ["青少管樂(請假) 13:30-16:30", "安親班(校外教學-小熊博物館)"] },
       "2026-07-15": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 17:20-18:00"] },
       "2026-07-16": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 17:20-18:00"] },
       "2026-07-17": { bg: "blue", notes: ["青少管樂 13:30-16:30", "文化盃個別課加練 17:20-18:00"] },
@@ -1404,10 +1404,9 @@
         ]
       },
       "2026-07-20": {
-        bg: "pink",
-        redNotes: ["請假(高雄返程)"],
-        notes: ["韓國濟州島加練 13:30-16:00"]
+        redNotes: ["請假(高雄返程)"]
       },
+      "2026-07-21": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
       "2026-07-22": { bg: "pink", notes: ["韓國濟州島加練 13:30-16:00"] },
       "2026-07-23": {
         bg: "cup",
@@ -1425,7 +1424,7 @@
         ]
       },
       "2026-07-27": { bg: "yellow", notes: ["A團管樂 13:30-16:00"] },
-      "2026-07-28": { bg: "yellow", notes: ["A團管樂 13:30-16:00", "安親班(校外教學-小人國)"] },
+      "2026-07-28": { bg: "yellow", notes: ["A團管樂(請假) 13:30-16:00", "安親班(校外教學-小人國)"] },
       "2026-07-29": { bg: "yellow", notes: ["個別課 07:40-08:20 (1堂課)", "A團管樂 13:30-16:00", "ESL菁英班文法 16:30-18:30"] },
       "2026-07-30": { bg: "yellow", notes: ["個別課 07:40-08:20 (1堂課)", "A團管樂 13:30-16:00 (管樂評鑑)", "ESL菁英班文法 16:30-18:30"] },
       "2026-07-31": { bg: "green", notes: ["韓國濟州島集訓 13:30-16:00", "ESL菁英班文法 16:30-18:30"] },
@@ -1480,7 +1479,8 @@
     function pad(n) { return String(n).padStart(2, "0"); }
     function dateKey(y, m, d) { return `${y}-${pad(m)}-${pad(d)}`; }
 
-    function renderMonth(year, month, tbodyId) {
+    function renderMonth(year, month, tbodyId, options = {}) {
+      const hideAdjacentSchedule = options.hideAdjacentSchedule === true;
       const tbody = document.getElementById(tbodyId);
       const first = new Date(year, month - 1, 1);
       const startOffset = first.getDay();
@@ -1495,13 +1495,13 @@
         const prevYear = month === 1 ? year - 1 : year;
         const prevDays = new Date(prevYear, prevMonth, 0).getDate();
         const prevDay = prevDays - startOffset + i + 1;
-        html += renderCell(prevDay, dateKey(prevYear, prevMonth, prevDay), true, cellIndex % 7);
+        html += renderCell(prevDay, dateKey(prevYear, prevMonth, prevDay), true, cellIndex % 7, hideAdjacentSchedule);
         cellIndex++;
       }
 
       while (day <= daysInMonth) {
         if (cellIndex % 7 === 0 && day !== 1) html += "</tr><tr>";
-        html += renderCell(day, dateKey(year, month, day), false, cellIndex % 7);
+        html += renderCell(day, dateKey(year, month, day), false, cellIndex % 7, hideAdjacentSchedule);
         day++;
         cellIndex++;
       }
@@ -1511,7 +1511,7 @@
         const nextMonth = month === 12 ? 1 : month + 1;
         const nextYear = month === 12 ? year + 1 : year;
         for (let i = 1; i <= remaining; i++) {
-          html += renderCell(i, dateKey(nextYear, nextMonth, i), true, (cellIndex + i - 1) % 7);
+          html += renderCell(i, dateKey(nextYear, nextMonth, i), true, (cellIndex + i - 1) % 7, hideAdjacentSchedule);
         }
       }
 
@@ -1519,11 +1519,11 @@
       tbody.innerHTML = html;
     }
 
-    function renderCell(dayNum, key, isAdjacent, dayOfWeek) {
+    function renderCell(dayNum, key, isAdjacent, dayOfWeek, hideAdjacentSchedule = false) {
       const data = schedule[key] || {};
       const hasEvent = Boolean(data.bg || data.notes || data.redNotes || data.flight);
       const classes = [];
-      const mutedAdjacent = isAdjacent && !hasEvent;
+      const mutedAdjacent = isAdjacent && (hideAdjacentSchedule || !hasEvent);
 
       if (mutedAdjacent) classes.push("adjacent");
       else if (data.bg) classes.push(`bg-${data.bg}`);
@@ -1554,7 +1554,7 @@
     }
 
     renderMonth(2026, 7, "july-body");
-    renderMonth(2026, 8, "august-body");
+    renderMonth(2026, 8, "august-body", { hideAdjacentSchedule: true });
 
     document.querySelectorAll(".day-card-body .route, .day-card-body .group").forEach(el => {
       el.innerHTML = linkifyText(el.innerHTML);
