@@ -1480,7 +1480,8 @@
     function dateKey(y, m, d) { return `${y}-${pad(m)}-${pad(d)}`; }
 
     function renderMonth(year, month, tbodyId, options = {}) {
-      const hideAdjacentSchedule = options.hideAdjacentSchedule === true;
+      const hidePrevAdjacentSchedule = options.hidePrevAdjacentSchedule === true;
+      const hideNextAdjacentSchedule = options.hideNextAdjacentSchedule === true;
       const tbody = document.getElementById(tbodyId);
       const first = new Date(year, month - 1, 1);
       const startOffset = first.getDay();
@@ -1495,13 +1496,13 @@
         const prevYear = month === 1 ? year - 1 : year;
         const prevDays = new Date(prevYear, prevMonth, 0).getDate();
         const prevDay = prevDays - startOffset + i + 1;
-        html += renderCell(prevDay, dateKey(prevYear, prevMonth, prevDay), true, cellIndex % 7, hideAdjacentSchedule);
+        html += renderCell(prevDay, dateKey(prevYear, prevMonth, prevDay), true, cellIndex % 7, hidePrevAdjacentSchedule);
         cellIndex++;
       }
 
       while (day <= daysInMonth) {
         if (cellIndex % 7 === 0 && day !== 1) html += "</tr><tr>";
-        html += renderCell(day, dateKey(year, month, day), false, cellIndex % 7, hideAdjacentSchedule);
+        html += renderCell(day, dateKey(year, month, day), false, cellIndex % 7);
         day++;
         cellIndex++;
       }
@@ -1511,7 +1512,7 @@
         const nextMonth = month === 12 ? 1 : month + 1;
         const nextYear = month === 12 ? year + 1 : year;
         for (let i = 1; i <= remaining; i++) {
-          html += renderCell(i, dateKey(nextYear, nextMonth, i), true, (cellIndex + i - 1) % 7, hideAdjacentSchedule);
+          html += renderCell(i, dateKey(nextYear, nextMonth, i), true, (cellIndex + i - 1) % 7, hideNextAdjacentSchedule);
         }
       }
 
@@ -1519,11 +1520,11 @@
       tbody.innerHTML = html;
     }
 
-    function renderCell(dayNum, key, isAdjacent, dayOfWeek, hideAdjacentSchedule = false) {
+    function renderCell(dayNum, key, isAdjacent, dayOfWeek, forceMuteAdjacent = false) {
       const data = schedule[key] || {};
       const hasEvent = Boolean(data.bg || data.notes || data.redNotes || data.flight);
       const classes = [];
-      const mutedAdjacent = isAdjacent && (hideAdjacentSchedule || !hasEvent);
+      const mutedAdjacent = isAdjacent && (forceMuteAdjacent || !hasEvent);
 
       if (mutedAdjacent) classes.push("adjacent");
       else if (data.bg) classes.push(`bg-${data.bg}`);
@@ -1553,8 +1554,8 @@
       </td>`;
     }
 
-    renderMonth(2026, 7, "july-body");
-    renderMonth(2026, 8, "august-body", { hideAdjacentSchedule: true });
+    renderMonth(2026, 7, "july-body", { hideNextAdjacentSchedule: true });
+    renderMonth(2026, 8, "august-body", { hidePrevAdjacentSchedule: true });
 
     document.querySelectorAll(".day-card-body .route, .day-card-body .group").forEach(el => {
       el.innerHTML = linkifyText(el.innerHTML);
